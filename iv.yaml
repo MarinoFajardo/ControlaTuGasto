@@ -1,1 +1,5 @@
 language: typescript
+
+entidad:
+  - src/ruta.ts
+  - src/tramo.ts
