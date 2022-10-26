@@ -1,31 +1,42 @@
 
-class Tramo {
+export class Tramo {
 
-    origen_tramo: string;
-    destino_tramo: string;
-    precio_tramo: number;
-    tiempo_tramo: number;
+    private origenTramo: string;
+    private destinoTramo: string;
+    private precioTramo: number;
+    private tiempoTramo: number;
 
-    constructor(origen_tramo: string, destino_tramo: string, precio_tramo: number, tiempo_tramo: number) {
-        this.origen_tramo = origen_tramo;
-        this.destino_tramo = destino_tramo;
-        this.precio_tramo = precio_tramo;
-        this.tiempo_tramo = tiempo_tramo;
+    constructor(origenTramo: string, destinoTramo: string, precioTramo: number, tiempoTramo: number) {
+        this.origenTramo = origenTramo;
+        this.destinoTramo = destinoTramo;
+
+        if(precioTramo >= 0) {
+          this.precioTramo = precioTramo;
+        } else {
+          throw new Error("El precio del tramo no puede ser negativo");
+        }
+
+        if(tiempoTramo > 0) {
+          this.tiempoTramo = tiempoTramo;
+        } else {
+          throw new Error("El tiempo del tramo no puede ser negativo");
+        }
     }
 
-    getOrigenTramo() {
-        return this.origen_tramo;
+    public getOrigenTramo(): string {
+      return this.origenTramo;
     }
 
-    getDestinoTramo() {
-        return this.destino_tramo;
+    public getDestinoTramo(): string {
+      return this.destinoTramo;
     }
 
-    getPrecioTramo() {
-        return this.precio_tramo;
+    public getPrecioTramo(): number {
+      return this.precioTramo;
     }
 
-    getTiempoTramo() {
-        return this.tiempo_tramo;
+    public getTiempoTramo(): number {
+      return this.tiempoTramo;
     }
+
 }

@@ -1,36 +1,32 @@
+import {Tramo} from "./tramo"
 
 class Ruta{
-    origen_ruta: string;
-    destino_ruta: string;
-    precio_total: number;
-    tiempo_total: number;
-    tramos: Tramo[];
 
-    constructor(origen_ruta: string, destino_ruta: string, precio_total: number, tiempo_total: number, tramos: Tramo[]) {
-        this.origen_ruta = origen_ruta;
-        this.destino_ruta = destino_ruta;
-        this.precio_total = precio_total;
-        this.tiempo_total = tiempo_total;
-        this.tramos = tramos;
+    private fechaRuta: Date;
+    private origenRuta: string;
+    private destinoRuta: string;
+    private precioTotal: number;
+    private tiempoTotal: number;
+    private tramos: Tramo[];
+
+    constructor(fecha: Date,tramos: Tramo[]) {
+      this.fechaRuta = fecha;
+      this.tramos = tramos;
+      
+      let n = tramos.length;
+
+      this.origenRuta = tramos[0].getOrigenTramo();
+      this.destinoRuta = tramos[n-1].getDestinoTramo();
+
+      // El precioTotal es la suma de los precios de cada tramo
+      this.precioTotal = tramos.reduce((cumsum, current) => {
+        return + current.getPrecioTramo()
+      } , 0);
+
+      // El tiempoTotal es la suma de los tiempos de cada tramo
+      this.tiempoTotal = tramos.reduce((cumsum, current) => {
+        return + current.getTiempoTramo()
+      } , 0);
     }
 
-    getOrigenRuta() {
-        return this.origen_ruta;
-    }
-
-    getDestinoRuta() {
-        return this.destino_ruta;
-    }
-
-    getPrecioTotal() {
-        return this.precio_total;
-    }
-
-    getTiempoTotal() {
-        return this.tiempo_total;
-    }
-
-    getTramos() {
-        return this.tramos;
-    }
 }

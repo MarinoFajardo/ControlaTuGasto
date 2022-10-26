@@ -1,5 +1,6 @@
 language: typescript
 
-entidad:
-  - src/ruta.ts
-  - src/tramo.ts
+objeto valor: src/tramo.ts
+
+entidad: src/ruta.ts
+
