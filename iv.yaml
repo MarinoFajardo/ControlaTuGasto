@@ -2,3 +2,7 @@ lenguaje: typescript
 
 entidad: src/ruta.ts
 
+automatizar:
+  fichero: package.json
+  orden: npm run
+
