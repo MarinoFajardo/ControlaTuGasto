@@ -58,3 +58,8 @@ Esta información ha sido obtenida del siguiente [enlace](https://jesuslc.com/20
 
 ## Checkeo de Sintaxis
 Para hacer los checks del código, voy a usar Eslint, ya que es el validador de sintaxis más usado de typeScript. Para configurarlo correctamente he hecho uso del siguiete [enlace](https://mugan86.medium.com/eslint-en-typescript-paso-a-paso-ab2255321fd).
+Para esta tarea se podrían haber usado otras alternativas como:
+    - Prettier: Buena alternativa a Eslint, tiene la ventaja de que se puede instalar y combibar con Eslint para los checks del código. Podemos encontrar más información sobre su configuración y su instalación en el siguiente [enlace](https://prettier.io/docs/en/install.html).
+    - JSHint: Detecta errores y problemas pontenciales de código javascript y typescript. Es muy flexible y muy fácil de ajustar. Se puede encontrar más información en su [web](https://jshint.com/about/).
+    - TextLint: No se usa para validar código JavaScript ni TypeScript pero es un validador de texto en formato markdown por lo que podría ser interesante para el proyecto. En esta [web](https://textlint.github.io/docs/getting-started.html) podemos encontrar más infomación de uso y de configuración.
+    - 
