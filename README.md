@@ -2,11 +2,10 @@
 
 ## Comprobaciones
 Para comprobar la sintaxis del código, hacer uso de la orden:
-  - npm run check
+  - yarn check
+  - ¡OJO! A la hora de ejecutar es necesario añadir una s al final de check, pasando a ser checks ya que yarn tiene una orden llamada check incorporada y no hace el check de la sintaxis del código.
 
-Para comprobar el formato del código hacer uso de la orden:
-  - npm run lint
-  - npm run lint_and_fix para solucionar errores automáticos
+
 
 ## Descripción General
 Durante la asignatura se va a desarrollar una aplicación para calcuar la ruta de autobús más óptima para ir desde un origen a un destino.

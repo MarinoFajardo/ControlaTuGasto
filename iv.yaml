@@ -4,5 +4,5 @@ entidad: src/ruta.ts
 
 automatizar:
   fichero: package.json
-  orden: npm run
+  orden: yarn
 
