@@ -27,35 +27,30 @@ Para el desarrollo del proyecto se han creado un total de cuatro milestones:<br/
 
 En el primer milestone(M0) se pretende realizar una representación del modelo del problema. En este caso se creará la implementación de una clase llamada tramo y otra clase ruta, siendo una ruta una colección de tramos entre un origen y un destino. Una vez obtenida la representación del modelo, en los milestones M1,M2,M3 se creará un grafo de tramos que conecten el lugar de origen con el destino y se aplicará la lógica de negocio mediante un algoritmo greedy para obtener las rutas descritas en las historias de usuario. En el milestone M1 se buscará la ruta más barata, en el milestone M2 se buscará la ruta más corta y en el milestone M3 la ruta más óptima. En cada uno de estos milestones se devolverá al usuario la ruta generada por pantalla.
 
+
+
 ## Runtime de la aplicación
-Tras una búsqueda para conocer los runtimes mas usados para typeScript podemos decir que los más usados son los siguientes:
+A la hora de establecer las herramientas que vamos a usar en el proyecto, lo primero que debemos hacer es establecer una serie criterios que vamos a seguir a la hora de la elección. Para este proyecto estamos buscando herramientas que nos proporcionen la mayor velocidad y que no nos obliguen a incorporar ficheros innecesarios en el proyecto. Teniendo encuenta estos requisitos y buscando las herramientas con mayor aceptación para el lenguaje de programación elegido, que en mi caso es TypeScript, nos encontramos con los siguientes Runtimes:
 - Node.js: Es el runtime más usado, tiene una documentación muy completa y posee frameworks ya consolidados. Podemos obtener más información en su [sitio web](https://nodejs.org/en/).
 - Deno: Mucho más seguro que Node.js ya que únicamente dota al programa a ejecutar los permisos que sean necesarios. No tiene un gestor de dependencias como Node tiene a npm ya que instala las dependencias a partir de una URL. Usa módulos ES6 en lugar de los CommonJs que usa Node. Usa promesas en vez de callbacks, lo que hace que el código sea más legible y reutilizable. Además dispone de de librerías o APIS del navegador, como fetch que no está disponible en Node. Deno supone todas estas ventajas con respecto a Node a cambio de un rendimiento un tanto inferior. Esta información ha sido obtenida del siguiente [enlace](https://openwebinars.net/blog/que-es-deno-y-que-lo-hace-diferente/#:~:text=Aunque%20Deno%20sigue%20la%20misma,el%20Event%20Loop%20de%20Deno.) o en su [página web](https://deno.land/).
-- Bun: Es un runtime relativamente nuevo que nos proporciona un rendimiento mucho mayor que Node y Deno. Se encuentra actualmente en fase Beta por lo que se pueden encontrar errores en algunas librerías de Node. Actúa además de runtime como gestor de dependencias y gestor de tareas. Podemos obtener más información respecto a Bun en el siguiente [enlace](https://dev.to/builderio/a-first-look-at-bun-is-it-really-3x-faster-than-nodejs-and-deno-45od) o en su [página web](https://bun.sh/).
-- Otras opciones menos conocidas son: Napa.JS , Hernes , JerryScript o QuickJS, pero no son muy usadas. 
+- Bun: Es un runtime relativamente nuevo que nos proporciona un rendimiento mucho mayor que Node y Deno. Se encuentra actualmente en fase Beta por lo que se pueden encontrar errores en algunas librerías de Node. Actúa además de runtime como gestor de dependencias y gestor de tareas. Podemos obtener más información respecto a Bun en el siguiente [enlace](https://dev.to/builderio/a-first-look-at-bun-is-it-really-3x-faster-than-nodejs-and-deno-45od) o en su [página web](https://bun.sh/). 
 
-La lista de los runtimes descritos en este issue ha sido obtenida del siguiente [enlace](https://bestofjs.org/projects?tags=runtime). Como podemos observar, las tres primeras opciones nombradas tienen un uso mucho más alto que el resto, por eso no se ha hecho demasiado hincapié en ellas.
-En principio tenia pensado usar bun debido a su alta potencia y a que me parecía interesante ya que es un runtime "todo en uno", pero por errores de compatibilidad con mi versión de Sistema Operativo(cosas de estar en Beta) voy a usar NodeJS ya que lo he usado antes y quiero priorizar el rendimiento superior de NodeJs con respecto a las mejoras en seguridad que nos proporciona Deno.
+Teniendo en cuenta lo descrito anteriormente, el runtime más adecuado para el proyecto sería bun ya que en cuanto a velocidad es el más rápido y al ser un runtime "todo en uno" no nos obligaría a instalar ningún gestor de dependencias ni de tareas, pero debido a una incopatibilidad de mi Sistema Operativo con Bun no puedo usarlo. Tras esto nos encontramos con la elección del Runtime entre NodeJS y Deno, para esta elección he priorizado la velocidad extra que nos aporta en sistemas Linux x64, mientras que Deno nos aporta una mejora de rendimiento en sistemas MAC.
 
 
 
 ## Gestor de Dependencias
 Tras elegir el Runtime que se va a usar en la aplicación, es el turno de tomar la decisión de qué gestor de dependencias se va a usar. A continuación se muestran los más comunes:
-- NPM/PNPM: Gestor de dependencias de Node. Cuenta con un repositorio de más de 100000 paquetes y módulos.
-- Bower: Este gestor de paquetes(dependencias) corre sobre NPM. NPM es mucho más completo mientras que Bower apuesta por la reducción en el tamaño del archivo y los tiempos de carga para las dependencias del frontend. Se puede decir que está obsoleto ya que NPM puede hacer casi todo lo que hace Bower.
-- RequireJS: Es un cojunto de herramientas de JS que se puede utilizar para cargar módulos de manera sencilla incluyendo módulos de Node. Puede detectar automáticamente las dependencias necesarias en base a lo que estás utilizando.
-- Jam: Gestor de paquetes(dependencias) que funciona en el navegador  y de gestión automática similar a RequireJS. Todas sus dependencias son introducidas en un único archivo que te permite agregar y quitar elementos de forma sencilla.
+- NPM: Gestor de dependencias de Node. Cuenta con un repositorio de más de 100000 paquetes y módulos.
+- PNPM: Las dependencias se almacenan en un almacén direccionable por contenido, por lo que a la hora de actualizar una dependencia se actualizará únicamente esa dependencia en lugar de clonar todas las
+dependencias para únicamente guardar ese cambio. Esto produce un ahorro de espacio en disco una mejora sustancial del rendimiento.
 - Yarn: Es un gestor de paquetes(dependencias) que te permite usar y compartir código para aumentar un poco el rendimiento, además permite instalar paquetes en paralelo a diferencia de NPM que los instala de forma secuencial por lo que aumenta el rendimiento. Actualmente su uso está creciendo bastante.
-- [¿Qué es Yarn?](https://www.itdo.com/blog/javascript-que-es-yarn/#:~:text=Qu%C3%A9%20es%20Yarn%3F-,Yarn%20es%20un%20gestor%20de%20paquetes%20para%20tu%20c%C3%B3digo.,compatible%20con%20el%20registro%20npm.)
-- [Gestores de dependencias para el desarrollo web](https://programacion.net/articulo/5_gestores_de_dependencias_para_el_desarrollo_web_1421).
 
-Teniendo todo lo anterior en cuenta, para la aplicación se va a usar yarn debido a que su instalación no genera deuda técnica y nos da una mejora sustancial de rendimiento y seguridad con respecto a npm aunque con respecto a NPMP el rendimiento es similar.
+Teniendo todo lo anterior en cuenta, para la aplicación se va a usar yarn debido a que su instalación no genera deuda técnica y nos da una mejora sustancial de rendimiento y seguridad con respecto a NPM, aunque con respecto a NPMP el rendimiento es similar.
 
 ## Gestor de Tareas
 Tras elegir el gestor de Dependencias, es hora de elegir el Task Runner para la aplicación, para no aumentar la deuda técnica añadiendo nuevos ficheros a la aplicación, voy a usar yarn como Task Runner ya que para lo que se va a realizar en la asignatura es suficiente. Otras opciones serían:
 - Grunt: Está muy extendido y tiene una alta cantidad de recursos. Para usarlo, escribimos las tareas a usar en un archivo Gruntfile.js y las ejecutamos. Podemos obtener más información sobre Grunt en su [página web](https://gruntjs.com/).
 - Gulp: Es muy similar a Grunt pero su filosofía es diferente. Gulp se basa en pipes(tuberías de Unix), así que lo que se hace es construir una tubería en vez de ir encadenando tareas, por ello modificar el flujo es sencillo y además el código resultante es muy fácil de leer. Podemos obtener más información sobre Gulp en su [página web](https://gulpjs.com/).
-
-Esta información ha sido obtenida del siguiente [enlace](https://jesuslc.com/2016/10/04/npm-vs-grunt-vs-gulp-vs-webpack-vs-vaya-lio-de-frontend/)
 
 A la hora del uso de yarn para pasar os test, es necesario usar la orden **checks** en lugar **check** debido a que yarn ya cuenta con una función check y sino no es posible pasar los test.
