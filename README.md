@@ -3,6 +3,7 @@
 ## Comprobaciones
 Para inicializar el proyecto hay que instalar pnpm con:
 - pnpm install
+
 Para realizar la comprobación se la sintaxis:
 - pnpm run check
 
