@@ -1,4 +1,4 @@
-import {Parada} from "./parada";
+import {Parada} from "./parada"
 
 export class Tramo {
 
@@ -12,32 +12,32 @@ export class Tramo {
         this.destinoTramo = destinoTramo;
 
         if(precioTramo >= 0) {
-            this.precioTramo = precioTramo;
+          this.precioTramo = precioTramo;
         } else {
-            throw new Error("El precio del tramo no puede ser negativo");
+          throw new Error("El precio del tramo no puede ser negativo");
         }
 
         if(tiempoTramo > 0) {
-            this.tiempoTramo = tiempoTramo;
+          this.tiempoTramo = tiempoTramo;
         } else {
-            throw new Error("El tiempo del tramo no puede ser negativo");
+          throw new Error("El tiempo del tramo no puede ser negativo");
         }
     }
 
-    public getOrigenTramo(): Parada {
-        return this.origenTramo;
+    public getOrigenTramo(): string {
+      return this.origenTramo;
     }
 
-    public getDestinoTramo(): Parada {
-        return this.destinoTramo;
+    public getDestinoTramo(): string {
+      return this.destinoTramo;
     }
 
     public getPrecioTramo(): number {
-        return this.precioTramo;
+      return this.precioTramo;
     }
 
     public getTiempoTramo(): number {
-        return this.tiempoTramo;
+      return this.tiempoTramo;
     }
 
 }
