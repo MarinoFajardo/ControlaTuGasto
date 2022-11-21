@@ -2,13 +2,13 @@
   "name": "controlatugasto",
   "version": "1.0.0",
   "description": "Durante la asignatura se va a desarrollar una aplicación para calcuar la ruta de autobús más óptima para ir desde un origen a un destino.",
-  "main": "index.js",
+  "main": "./src/ruta.ts",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "start": "ts-node ./src/ruta.ts",
-    "check": "pnpm tsc --noEmit",
+    "check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
