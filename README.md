@@ -1,11 +1,10 @@
 # ControlaTuGasto
 
 ## Comprobaciones
-Para comprobar la sintaxis del código, hacer uso de la orden:
-  - yarn check
-  - ¡OJO! A la hora de ejecutar es necesario añadir una s al final de check, pasando a ser checks ya que yarn tiene una orden llamada check incorporada y no hace el check de la sintaxis del código.
-
-
+Para inicializar el proyecto hay que instalar pnpm con:
+- pnpm install
+Para realizar la comprobación se la sintaxis:
+- pnpm run check
 
 ## Descripción General
 Durante la asignatura se va a desarrollar una aplicación para calcuar la ruta de autobús más óptima para ir desde un origen a un destino.
