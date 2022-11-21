@@ -4,7 +4,7 @@
 Para inicializar el proyecto hay que instalar pnpm con:
 - pnpm install
 
-Para realizar la comprobación se la sintaxis:
+Para realizar la comprobación de la sintaxis:
 - pnpm run check
 
 ## Descripción General

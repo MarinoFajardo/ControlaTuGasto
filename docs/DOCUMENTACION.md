@@ -37,7 +37,7 @@ dependencias para únicamente guardar ese cambio. Esto produce un ahorro de espa
 Teniendo todo lo anterior en cuenta, el gestor de dependencias más recomendado es pnpm, ya que tiene una puntuación de 100 y su rendimiento es superior al de npm y al de yarn.
 
 ## Gestor de Tareas
-Para la elección del gestor de tareas se va a tener en cuenta su valoración en [Snyk Advisor](https://snyk.io/advisor/). Tenemos dos opciones a la hora de elegir:
+Para la elección del gestor de tareas se va a tener en cuenta su lo estandarizada que esté la herramienta. Al igual que para el gestor de dependencias, la estandarización de la herramienta se va a medir con su valoración en [Snyk Advisor](https://snyk.io/advisor/). Tenemos dos opciones a la hora de elegir:
 - Optar por usar el gestor de dependencias como gestor de tareas, ya que para lo que vamos a realizar en el proyecto estos gestores de dependencias pueden actuar como gestores de tareas. En la elección del gestor de dependencias se han comentado las puntuaciones de npm, pnpm y de yarn.
 - Añadir un gestor de tareas que sea capaz de realizar tareas más específicas. Si optamos por esto, el gestor de tareas específico más valorado es grunt, que cuenta con una valoración de 85.
 
