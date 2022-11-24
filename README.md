@@ -1,10 +1,11 @@
 # ControlaTuGasto
 
-## Comprobaciones
-Para inicializar el proyecto hay que instalar pnpm con:
+## Instalación de pnpm
+Para inicializar el proyecto hay que instalar pnpm con la siguiente orden:
 - pnpm install
 
-Para realizar la comprobación de la sintaxis:
+## Comprobación de la sintaxis
+Para realizar la comprobación de la sintaxis ejecutar la siguiente orden:
 - pnpm run check
 
 ## Descripción General
