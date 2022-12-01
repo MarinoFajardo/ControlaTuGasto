@@ -1,0 +1,33 @@
+{
+  "name": "controlatugasto",
+  "version": "1.0.0",
+  "description": "Durante la asignatura se va a desarrollar una aplicación para calcuar la ruta de autobús más óptima para ir desde un origen a un destino.",
+  "main": "./src/ruta.ts",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "ts-node ./src/ruta.ts",
+    "check": "tsc --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarinoFajardo/ControlaTuGasto.git"
+  },
+  "keywords": [],
+  "author": "Marino Fajardo Torres",
+  "license": "IGPL-3.0SC",
+  "bugs": {
+    "url": "https://github.com/MarinoFajardo/ControlaTuGasto/issues"
+  },
+  "homepage": "https://github.com/MarinoFajardo/ControlaTuGasto#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@types/node": "*",
+    "pnpm": "^7.17.0"
+  }
+}
