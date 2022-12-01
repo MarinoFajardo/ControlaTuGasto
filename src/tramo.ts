@@ -24,11 +24,11 @@ export class Tramo {
         }
     }
 
-    public getOrigenTramo(): string {
+    public getOrigenTramo(): Parada {
       return this.origenTramo;
     }
 
-    public getDestinoTramo(): string {
+    public getDestinoTramo(): Parada {
       return this.destinoTramo;
     }
 
