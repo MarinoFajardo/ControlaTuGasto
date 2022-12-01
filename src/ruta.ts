@@ -1,10 +1,11 @@
 import {Tramo} from "./tramo"
+import {Parada} from "./parada"
 
 class Ruta{
 
     private fechaRuta: Date;
-    private origenRuta: string;
-    private destinoRuta: string;
+    private origenRuta: Parada;
+    private destinoRuta: Parada;
     private precioTotal: number;
     private tiempoTotal: number;
     private tramos: Tramo[];
