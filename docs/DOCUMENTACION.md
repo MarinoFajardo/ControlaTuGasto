@@ -42,3 +42,16 @@ Para la elección del gestor de tareas se va a tener en cuenta la puntuación de
 - Añadir un gestor de tareas que sea capaz de realizar tareas más específicas. Si optamos por esto, el gestor de tareas específico más valorado es grunt, que cuenta con una valoración de 85, aunque su última actualización se realizó hace 7 meses, por lo que podría estar desactualizado. Su uso nos incorpora el archivo Gruntfile en la aplicación.
 
 Teniendo esto en cuenta, he decidido usar pnpm como gestor de tareas, ya que para lo que se va a realizar en el proyecto es suficiente y no nos genera nuevos ficheros en la aplicación, además de que cuenta con una mejor valoración y actualizaciones frecuentes. 
+
+## Test Runner
+A la hora de elegir el test runner para la aplicación se van a tener en cuenta una serie de criterios:
+- Incluir el menor número de herramientas posibles en la aplicación.
+- Usar herramientas actualizadas para evitar generar deuda técnica.
+- Usar test BDD.
+
+Las herramientas que cumplen con los criterios establecidos son las siguientes:
+- **Jasmine**: Trae incluida una biblioteca de aserciones, por lo que ya no sería necesaria su incorporación, su última actualización se realizó hace 26 días y usa BDD aunque también puede usar unitest y TDD.
+- **Jest**: Al igual que Jasmine trae incorporada su propia biblioteca de aserciones, por lo que no sería necesario incluir más herramientas a la aplicación. Su última actualización fue hace 16 días y usa BDD.
+- **Mocha**: No trae incorporada biblioteca de aserciones por lo que sería necesario incorporar más tarde alguna biblioteca como chai. Su última actualización fue hace 1 mes y si usamos Chai como biblioteca de aserciones los test serán BDD.
+
+Teniendo todo esto en cuenta y para no tener que añadir más herramientas voy a optar por usar **Jest** en la aplicación y de esta manera tener ya la biblioteca de aserciones incluida. Se podría haber optado igualmente por Jasmine, ya que cumple todos los criterios, pero he optado por Jest al tener una puntuación un poco superior en [Snyk Advisor](https://snyk.io/advisor/).
