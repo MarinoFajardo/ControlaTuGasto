@@ -39,5 +39,28 @@ export class Tramo {
     public getTiempoTramo(): number {
       return this.tiempoTramo;
     }
+}
 
+export function isOriginEqualToDestiny(tramo:Tramo): boolean {
+  if (tramo.getOrigenTramo() == tramo.getDestinoTramo()){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+export function isPrizePositive(tramo:Tramo): boolean {
+  if(tramo.getPrecioTramo() > 0){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+export function isTimePositive(tramo:Tramo): boolean {
+  if(tramo.getTiempoTramo() > 0){
+    return true;
+  }else{
+    return false;
+  }
 }
