@@ -1,7 +1,7 @@
 import {Tramo} from "./tramo"
 import {Parada} from "./parada"
 
-class Ruta{
+export class Ruta{
 
     private fechaRuta: Date;
     private origenRuta: Parada;
@@ -30,4 +30,72 @@ class Ruta{
       } , 0);
     }
 
-}
+    public getPrecioTotal(): number {
+      return this.precioTotal;
+    }
+
+    public getTiempoTotal(): number {
+      return this.tiempoTotal;
+    }
+
+    public getOrigenRuta(): Parada{
+      return this.origenRuta;
+    }
+
+    public getDestinoRuta(): Parada{
+      return this.destinoRuta;
+    }
+
+    public getFechaRuta(): Date{
+      return this.fechaRuta;
+    }
+    public getTramos(): Tramo[]{
+      return this.tramos;
+    }
+  }
+
+  export function isRoutePrizePositive(ruta: Ruta):boolean{
+    if (ruta.getPrecioTotal() > 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  export function isRouteTimePositive(ruta:Ruta):boolean{
+    if (ruta.getTiempoTotal() > 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  export function isRouteOriginEqualToDestiny(ruta:Ruta):boolean{
+    if (ruta.getOrigenRuta() == ruta.getDestinoRuta()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  export function isDateRouteOK(ruta:Ruta):boolean{
+    if(Date.now() > ruta.getFechaRuta().getTime()){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  export function isOriginDuplicated(ruta:Ruta):boolean{
+    let contador:number = 0;
+    for(let tramo of ruta.getTramos()){
+      if((tramo.getOrigenTramo() == ruta.getOrigenRuta())||((tramo.getDestinoTramo() == ruta.getOrigenRuta()))){
+        contador++;
+      }
+    }
+    if(contador > 1){
+      return true;
+    }else{
+      return false;
+    }
+  }
