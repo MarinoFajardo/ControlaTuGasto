@@ -1,0 +1,110 @@
+[
+  {
+    "origenTramo": {
+      "idParada": "001",
+      "ciudad": "Granada"
+    },
+    "destinoTramo":{
+      "idParada": "002",
+      "ciudad": "Motril"
+    },
+    "precioTramo": "1.2",
+    "tiempoTramo": "60"
+  },
+  {
+    "origenTramo": {
+      "idParada": "002",
+      "ciudad": "Motril"
+    },
+    "destinoTramo":{
+      "idParada": "003",
+      "ciudad": "Salobreña"
+    },
+    "precioTramo": "0.9",
+    "tiempoTramo": "20"
+  },
+  {
+    "origenTramo": {
+      "idParada": "003",
+      "ciudad": "Salobreña"
+    },
+    "destinoTramo":{
+      "idParada": "004",
+      "ciudad": "Almuñécar"
+    },
+    "precioTramo": "1.5",
+    "tiempoTramo": "25"
+  },
+  {
+    "origenTramo": {
+      "idParada": "004",
+      "ciudad": "Almuñécar"
+    },
+    "destinoTramo":{
+      "idParada": "005",
+      "ciudad": "Jete"
+    },
+    "precioTramo": "0.7",
+    "tiempoTramo": "15" 
+  },
+  {
+    "origenTramo": {
+      "idParada": "005",
+      "ciudad": "Jete"
+    },
+    "destinoTramo":{
+      "idParada": "006",
+      "ciudad": "Otívar"
+    },
+    "precioTramo": "0.5",
+    "tiempoTramo": "8" 
+  },
+  {
+    "origenTramo": {
+      "idParada": "001",
+      "ciudad": "Granada"
+    },
+    "destinoTramo":{
+      "idParada": "003",
+      "ciudad": "Salobreña"
+    },
+    "precioTramo": "2.1",
+    "tiempoTramo": "80"
+  },
+  {
+    "origenTramo": {
+      "idParada": "001",
+      "ciudad": "Granada"
+    },
+    "destinoTramo":{
+      "idParada": "004",
+      "ciudad": "Almuñecar"
+    },
+    "precioTramo": "1.8",
+    "tiempoTramo": "100"
+  },
+  {
+    "origenTramo": {
+      "idParada": "004",
+      "ciudad": "Almuñécar"
+    },
+    "destinoTramo":{
+      "idParada": "006",
+      "ciudad": "Otívar"
+    },
+    "precioTramo": "2.5",
+    "tiempoTramo": "30"
+  },
+  {
+    "origenTramo": {
+      "idParada": "003",
+      "ciudad": "Salobreña"
+    },
+    "destinoTramo":{
+      "idParada": "006",
+      "ciudad": "Otívar"
+    },
+    "precioTramo": "2.2",
+    "tiempoTramo": "50"
+  }
+]
