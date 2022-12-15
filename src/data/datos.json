@@ -30,7 +30,7 @@
     },
     "destinoTramo":{
       "idParada": "004",
-      "ciudad": "Almuñécar"
+      "ciudad": "Almuñecar"
     },
     "precioTramo": "1.5",
     "tiempoTramo": "25"
@@ -38,7 +38,7 @@
   {
     "origenTramo": {
       "idParada": "004",
-      "ciudad": "Almuñécar"
+      "ciudad": "Almuñecar"
     },
     "destinoTramo":{
       "idParada": "005",
@@ -54,7 +54,7 @@
     },
     "destinoTramo":{
       "idParada": "006",
-      "ciudad": "Otívar"
+      "ciudad": "Otivar"
     },
     "precioTramo": "0.5",
     "tiempoTramo": "8" 
@@ -68,8 +68,44 @@
       "idParada": "003",
       "ciudad": "Salobreña"
     },
-    "precioTramo": "2.1",
+    "precioTramo": "2.6",
     "tiempoTramo": "80"
+  },
+  {
+    "origenTramo": {
+      "idParada": "003",
+      "ciudad": "Salobreña"
+    },
+    "destinoTramo":{
+      "idParada": "004",
+      "ciudad": "Almuñecar"
+    },
+    "precioTramo": "1.5",
+    "tiempoTramo": "25"
+  },
+  {
+    "origenTramo": {
+      "idParada": "004",
+      "ciudad": "Almuñecar"
+    },
+    "destinoTramo":{
+      "idParada": "005",
+      "ciudad": "Jete"
+    },
+    "precioTramo": "0.7",
+    "tiempoTramo": "15" 
+  },
+  {
+    "origenTramo": {
+      "idParada": "005",
+      "ciudad": "Jete"
+    },
+    "destinoTramo":{
+      "idParada": "006",
+      "ciudad": "Otivar"
+    },
+    "precioTramo": "0.5",
+    "tiempoTramo": "8" 
   },
   {
     "origenTramo": {
@@ -80,31 +116,31 @@
       "idParada": "004",
       "ciudad": "Almuñecar"
     },
-    "precioTramo": "1.8",
+    "precioTramo": "3.1",
     "tiempoTramo": "100"
   },
   {
     "origenTramo": {
       "idParada": "004",
-      "ciudad": "Almuñécar"
+      "ciudad": "Almuñecar"
     },
     "destinoTramo":{
-      "idParada": "006",
-      "ciudad": "Otívar"
+      "idParada": "005",
+      "ciudad": "Jete"
     },
-    "precioTramo": "2.5",
-    "tiempoTramo": "30"
+    "precioTramo": "0.7",
+    "tiempoTramo": "15" 
   },
   {
     "origenTramo": {
-      "idParada": "003",
-      "ciudad": "Salobreña"
+      "idParada": "005",
+      "ciudad": "Jete"
     },
     "destinoTramo":{
       "idParada": "006",
-      "ciudad": "Otívar"
+      "ciudad": "Otivar"
     },
-    "precioTramo": "2.2",
-    "tiempoTramo": "50"
+    "precioTramo": "0.5",
+    "tiempoTramo": "8" 
   }
 ]
