@@ -26,9 +26,6 @@ const circularReplacer = () => {
  };
 };
 
-const origen = "Granada";
-const destino = "Otívar";
-
 interface Nodo{
   parada: Parada | null ;
   coste: number | null ;
@@ -40,13 +37,22 @@ interface Nodo{
 
 export class Arbol{
   private root: Nodo;
+  private peso: number;
 
   constructor( root: Nodo){
     this.root = root;
+    this.peso = 0;
   }
 
   public getRoot(){
     return this.root;
+  }
+  public getPeso(){
+    return this.peso;
+  }
+
+  public incrementarPeso(){
+    this.peso++;
   }
 
   public aniadirHijos(nodo: Nodo){
@@ -97,13 +103,8 @@ export class Arbol{
           nodoactual.hermanoDrch = nodo;
           nodoactual = nodo;
         }
+        this.incrementarPeso();
       }
-  }
-
-  
-
-  public generarArbol(){
-    this.aniadirHijos(this.root);
   }
 }
 
@@ -131,11 +132,12 @@ export function rutaMasBarata(origen : string , destino: string, arbol: Arbol):n
 
   while(recorridos <= tramos.length){
     if(nodoactual != arbol.getRoot() || nodoactual.parada?.getCiudad() != origen){
-      if(nodoactual.coste != null){
+      if((nodoactual.coste != null)){
         acumulado += nodoactual.coste
         recorridos ++;
-        if(nodoactual.hijoIzq != null){
-          nodoactual = nodoactual.hijoIzq;
+        if(nodoactual.parada?.getCiudad() != destino){
+          if(nodoactual.hijoIzq != null)
+            nodoactual = nodoactual.hijoIzq;
         }else{
           if(acumulado < minimo){
             minimo = acumulado;
@@ -156,8 +158,9 @@ export function rutaMasBarata(origen : string , destino: string, arbol: Arbol):n
       }
     }
   }
-
   
+
+
   return minimo;
 }
 
