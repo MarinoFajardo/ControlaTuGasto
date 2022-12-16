@@ -1,6 +1,7 @@
-import {isDateRouteOK,isOriginDuplicated,isRouteOriginEqualToDestiny, isRoutePrizePositive, isRouteTimePositive, Ruta} from "../ruta"
+import {isOriginDuplicated, Ruta} from "../ruta"
 import {Parada} from "../parada"
 import {Tramo} from "../tramo"
+import { truncate } from "fs";
 
 const origen = new Parada("001","Granada");
 const destino = new Parada("002","Almuñécar");
@@ -14,19 +15,19 @@ const tramos: Tramo[] = [tramo,tramo2];
 const ruta = new Ruta(new Date("2024-12-12"),tramos);
 
 test("El precio de una ruta no puede ser negativo",() => {
-  expect(isRoutePrizePositive(ruta)).toBe(true);
+  expect(ruta.getPrecioTotal()).toBeGreaterThan(0);
 });
 
 test("La duración total de una ruta no puede ser negativa",() => {
-  expect(isRouteTimePositive(ruta)).toBe(true);
+  expect(ruta.getTiempoTotal()).toBeGreaterThan(0);
 });
 
 test("El origen y el destino de una ruta no puede ser el mismo",() => {
-  expect(isRouteOriginEqualToDestiny(ruta)).toBe(false);
+  expect(ruta.getOrigenRuta() == ruta.getDestinoRuta()).toBe(false);
 });
 
 test("La fecha de una ruta no puede ser anterior a la fecha actual",() => {
-  expect(isDateRouteOK(ruta)).toBe(true);
+  expect(Date.now() > ruta.getFechaRuta().getTime()).toBe(false);
 });
 
 test("El Origen no puede aparecer más de una vez en la ruta",() => {

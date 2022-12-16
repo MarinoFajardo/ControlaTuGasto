@@ -53,39 +53,6 @@ export class Ruta{
       return this.tramos;
     }
   }
-
-  export function isRoutePrizePositive(ruta: Ruta):boolean{
-    if (ruta.getPrecioTotal() > 0){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  export function isRouteTimePositive(ruta:Ruta):boolean{
-    if (ruta.getTiempoTotal() > 0){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  export function isRouteOriginEqualToDestiny(ruta:Ruta):boolean{
-    if (ruta.getOrigenRuta() == ruta.getDestinoRuta()){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  export function isDateRouteOK(ruta:Ruta):boolean{
-    if(Date.now() > ruta.getFechaRuta().getTime()){
-      return false;
-    }else{
-      return true;
-    }
-  }
-
   export function isOriginDuplicated(ruta:Ruta):boolean{
     let contador:number = 0;
     for(let tramo of ruta.getTramos()){
