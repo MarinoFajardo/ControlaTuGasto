@@ -16,11 +16,3 @@ export class Parada{
         return this.ciudad;
     }
 }
-
-export function areParadaIdEqual(a:Parada, b:Parada):boolean{
-    if((a.getCiudad() != b.getCiudad())&&(a.getidParada() == b.getidParada())){
-        return true;
-    }else{
-        return false;
-    }
-}
