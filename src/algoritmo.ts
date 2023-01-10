@@ -1,114 +1,10 @@
-import tramos from "./data/datos.json"
 import { Parada } from "./parada"
-
-const circularReplacer = () => {
-  
-  // Creating new WeakSet to keep 
-  // track of previously seen objects
-  const seen = new WeakSet();
-    
-  return (key:string, value:string) => {
-
-      // If type of value is an 
-      // object or value is null
-      if (typeof(value) === "object" && value !== null) {
-        
-      // If it has been seen before
-        if (seen.has(value)) {
-          return 'Object';
-        }
-        // Add current value to the set
-        seen.add(value);
-     }
-       
-     // return the value
-     return value;
- };
-};
-
-interface Nodo{
-  parada: Parada | null ;
-  coste: number | null ;
-  padre: Nodo | null;
-  hijoIzq: Nodo | null;
-  hermanoDrch: Nodo | null;
-}
+import { Tramo } from "./tramo"
+import { Nodo } from "./arbol"
+import { Arbol } from "./arbol"
 
 
-export class Arbol{
-  private root: Nodo;
-  private peso: number;
-
-  constructor( root: Nodo){
-    this.root = root;
-    this.peso = 0;
-  }
-
-  public getRoot(){
-    return this.root;
-  }
-  public getPeso(){
-    return this.peso;
-  }
-
-  public incrementarPeso(){
-    this.peso++;
-  }
-
-  public aniadirHijos(nodo: Nodo){
-    let nodoactual: Nodo={
-      parada : null,
-      coste : null,
-      padre : null,
-      hijoIzq : null,
-      hermanoDrch : null
-    };
-    nodoactual = nodo;
-      for(let tramo of tramos){
-        if(tramo.origenTramo.ciudad == nodoactual.parada?.getCiudad()){
-          if(nodoactual.hijoIzq == null){
-            let hijo : Nodo ={
-              parada : new Parada(tramo.destinoTramo.idParada, tramo.destinoTramo.ciudad),
-              coste : Number(tramo.precioTramo),
-              padre : nodoactual,
-              hijoIzq : null,
-              hermanoDrch : null
-            };
-            nodoactual.hijoIzq = hijo;
-            nodoactual = hijo;
-          }else{
-            let hermano : Nodo = {
-              parada : new Parada(tramo.destinoTramo.idParada, tramo.destinoTramo.ciudad),
-              coste : Number(tramo.precioTramo),
-              padre : nodoactual,
-              hijoIzq : null,
-              hermanoDrch : null
-            };
-              nodoactual.hermanoDrch = hermano;
-              nodoactual = hermano;
-          }
-        }else{
-          while(tramo.origenTramo.ciudad != nodoactual.padre?.parada?.getCiudad()){
-            if(nodoactual.padre != null){
-              nodoactual = nodoactual.padre;
-            }
-          }
-          let nodo: Nodo = {
-            parada : new Parada(tramo.destinoTramo.idParada, tramo.destinoTramo.ciudad),
-            coste : Number(tramo.precioTramo),
-            padre : nodoactual.padre,
-            hijoIzq : null,
-            hermanoDrch : null
-          }
-          nodoactual.hermanoDrch = nodo;
-          nodoactual = nodo;
-        }
-        this.incrementarPeso();
-      }
-  }
-}
-
-export function obtenerNodoRaíz(origen:string): Nodo{
+export function obtenerNodoRaíz(origen:string,tramos:Tramo[]): Nodo{
   let nodo : Nodo = {
     parada : null,
     coste : null,
@@ -117,20 +13,24 @@ export function obtenerNodoRaíz(origen:string): Nodo{
     hermanoDrch : null
   }
   for(let tramo of tramos){
-    if(tramo.origenTramo.ciudad == origen){
-      nodo.parada = new Parada(tramo.origenTramo.idParada, tramo.origenTramo.ciudad);
+    if(tramo.getOrigenTramo().getCiudad() == origen){
+      nodo.parada = new Parada(tramo.getOrigenTramo().getidParada(), tramo.getOrigenTramo().getCiudad());
     }
   }
-  return nodo;
+  if(nodo.parada != null){
+    return nodo;
+  }else{
+    throw new Error("El origen de ruta indicado no existe");
+  }
 }
 
-export function rutaMasBarata(origen : string , destino: string, arbol: Arbol):number{
+export function rutaMasBarata(origen : string , destino: string, arbol: Arbol, tramos:Tramo[]):number{
   let minimo : number = 100;
   let acumulado: number = 0;
   let nodoactual:Nodo = arbol.getRoot();
   let recorridos: number = 1;
 
-  while(recorridos <= tramos.length){
+  while(recorridos <= arbol.getPeso()){//Hay que recorrer todos los nodos del árbol
     if(nodoactual != arbol.getRoot() || nodoactual.parada?.getCiudad() != origen){
       if((nodoactual.coste != null)){
         acumulado += nodoactual.coste
@@ -158,9 +58,6 @@ export function rutaMasBarata(origen : string , destino: string, arbol: Arbol):n
       }
     }
   }
-  
-
-
   return minimo;
 }
 
