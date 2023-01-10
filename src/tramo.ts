@@ -39,4 +39,5 @@ export class Tramo {
     public getTiempoTramo(): number {
       return this.tiempoTramo;
     }
+    
 }

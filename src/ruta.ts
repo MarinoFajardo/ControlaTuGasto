@@ -52,17 +52,4 @@ export class Ruta{
     public getTramos(): Tramo[]{
       return this.tramos;
     }
-  }
-  export function isOriginDuplicated(ruta:Ruta):boolean{
-    let contador:number = 0;
-    for(let tramo of ruta.getTramos()){
-      if((tramo.getOrigenTramo() == ruta.getOrigenRuta())||((tramo.getDestinoTramo() == ruta.getOrigenRuta()))){
-        contador++;
-      }
-    }
-    if(contador > 1){
-      return true;
-    }else{
-      return false;
-    }
-  }
+}
