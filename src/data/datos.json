@@ -77,22 +77,22 @@
       "ciudad": "Salobreña"
     },
     "destinoTramo":{
-      "idParada": "004",
-      "ciudad": "Almuñecar"
+      "idParada": "007",
+      "ciudad": "Lobres"
     },
-    "precioTramo": "1.5",
+    "precioTramo": "1.0",
     "tiempoTramo": "25"
   },
   {
     "origenTramo": {
-      "idParada": "004",
-      "ciudad": "Almuñecar"
+      "idParada": "007",
+      "ciudad": "Lobres"
     },
     "destinoTramo":{
       "idParada": "005",
       "ciudad": "Jete"
     },
-    "precioTramo": "0.7",
+    "precioTramo": "1.1",
     "tiempoTramo": "15" 
   },
   {
@@ -140,7 +140,7 @@
       "idParada": "006",
       "ciudad": "Otivar"
     },
-    "precioTramo": "0.5",
+    "precioTramo": "0.4",
     "tiempoTramo": "8" 
   }
 ]
