@@ -1,8 +1,7 @@
 # ControlaTuGasto
 
 ## Instalación de pnpm
-Para inicializar el proyecto hay que instalar pnpm con la siguiente orden:
-- pnpm install
+Para inicializar el proyecto primero hay que instalar [pnpm](https://pnpm.io/installation). Una vez instalado, debemos usar la orden:
 
 ## Comprobación de la sintaxis
 Para realizar la comprobación de la sintaxis ejecutar la siguiente orden:
