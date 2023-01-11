@@ -13,9 +13,10 @@ export class Arbol{
   private root:Nodo;
   private peso:number;
 
-  constructor(root:Nodo){
+  constructor(root:Nodo,destino:string,array:Tramo[]){
     this.root = root;
     this.peso = 1; //Representa el número de nodos del árbol. Cuando se crea un árbol, el peso inicial el 1 ya que solo tiene el nodo raíz
+    this.generarArbol(array,destino);
   }
   
   //Usado en el algoritmo
@@ -36,54 +37,60 @@ export class Arbol{
   // Función que genera el árbol con el nodo root como origen de la ruta y el destino como las hojas del
   public generarArbol(tramos:Tramo[],destino:string){
     let nodoActual:Nodo = this.root;
-    for(let tramo of tramos){
-      if(tramo.getOrigenTramo().getCiudad() == nodoActual.parada?.getCiudad()){
-        if(nodoActual.hijoIzq == null){
-          let hijo : Nodo ={
-            parada : new Parada(tramo.getDestinoTramo().getidParada(), tramo.getDestinoTramo().getCiudad()),
-            coste : Number(tramo.getPrecioTramo()),
-            padre : nodoActual,
-            hijoIzq : null,
-            hermanoDrch : null
-          };
-          nodoActual.hijoIzq = hijo;
-          nodoActual = hijo;
-          this.incrementarPeso();
-        }else{
-          let hermano : Nodo = {
-            parada : new Parada(tramo.getDestinoTramo().getidParada(), tramo.getDestinoTramo().getCiudad()),
-            coste : Number(tramo.getPrecioTramo()),
-            padre : nodoActual,
-            hijoIzq : null,
-            hermanoDrch : null
-          };
-          nodoActual.hermanoDrch = hermano;
-          nodoActual = hermano;
-          this.incrementarPeso();
-        }
-      }else{
-        let tienePadre:boolean = false;
-        while(tramo.getOrigenTramo().getCiudad() != nodoActual.padre?.parada?.getCiudad() && nodoActual.padre != null){
-          if(nodoActual.padre != null){
-            nodoActual = nodoActual.padre;
-            tienePadre = true;
-          }
-        }
-        if(tienePadre){
-          let nodo: Nodo = {
-            parada : new Parada(tramo.getDestinoTramo().getidParada(), tramo.getDestinoTramo().getCiudad()),
-            coste : Number(tramo.getPrecioTramo()),
-            padre : nodoActual.padre,
-            hijoIzq : null,
-            hermanoDrch : null
-          }
-          nodoActual.hermanoDrch = nodo;
-          nodoActual = nodo;
-          this.incrementarPeso();
-        }
-      }
+    if(nodoActual.parada?.getCiudad() != null){
+      let origen:string = nodoActual.parada.getCiudad();
+    }else{
+      throw new Error("El origen de la ruta es nulo");
     }
-    
+    for(let tramo of tramos){
+        if(tramo.getOrigenTramo().getCiudad() == nodoActual.parada?.getCiudad() && tramo.getOrigenTramo().getCiudad() != destino){
+          if(nodoActual.hijoIzq == null){
+            let hijo : Nodo ={
+              parada : new Parada(tramo.getDestinoTramo().getidParada(), tramo.getDestinoTramo().getCiudad()),
+              coste : Number(tramo.getPrecioTramo()),
+              padre : nodoActual,
+              hijoIzq : null,
+              hermanoDrch : null
+            };
+            nodoActual.hijoIzq = hijo;
+            nodoActual = hijo;
+            this.incrementarPeso();
+          }else{
+            let hermano : Nodo = {
+              parada : new Parada(tramo.getDestinoTramo().getidParada(), tramo.getDestinoTramo().getCiudad()),
+              coste : Number(tramo.getPrecioTramo()),
+              padre : nodoActual,
+              hijoIzq : null,
+              hermanoDrch : null
+            };
+            nodoActual.hijoIzq.hermanoDrch = hermano;
+            nodoActual = hermano;
+            this.incrementarPeso();
+          }
+        }else{
+          let tienePadre:boolean = false;
+          while(tramo.getOrigenTramo().getCiudad() != nodoActual.padre?.parada?.getCiudad() && nodoActual.padre != null){
+            if(nodoActual.padre != null){
+              nodoActual = nodoActual.padre;
+              if(nodoActual.padre?.parada?.getCiudad() == tramo.getOrigenTramo().getCiudad()){
+                tienePadre = true;
+              }
+            }
+          }
+          if(tienePadre){
+            let nodo: Nodo = {
+              parada : new Parada(tramo.getDestinoTramo().getidParada(), tramo.getDestinoTramo().getCiudad()),
+              coste : Number(tramo.getPrecioTramo()),
+              padre : nodoActual.padre,
+              hijoIzq : null,
+              hermanoDrch : null
+            }
+            nodoActual.hijoIzq = nodo;
+            nodoActual = nodo;
+            this.incrementarPeso();
+          }
+        }
+    }
   }
 }
 
