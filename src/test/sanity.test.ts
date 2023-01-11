@@ -1,4 +1,4 @@
-import tramos from "../data/datos.json"
+import tramos from "./data/datos.json"
 
 const totalTramos: number = 12;
 

@@ -1,4 +1,4 @@
-import tramos from "../data/datos.json"
+import tramos from "./data/datos.json"
 import { obtenerNodoRaíz, rutaMasBarata } from "../algoritmo";
 import {Arbol, Nodo} from "../arbol";
 import { Tramo } from "../tramo";
@@ -45,10 +45,10 @@ test("El nodo raíz tiene que ser el origen de la ruta",() => {
   expect(arbol.getRoot().parada?.getCiudad()).toBe(origen);
 })
 
-test("El peso del árbol genrado para calcular las rutas entre Granada y Otívar tiene un peso de 13",() => {
+test("El peso del árbol generado para calcular las rutas entre Granada y Otívar tiene que ser 13",() => {
   expect(arbol.getPeso()).toBe(pesoArbol1);
 })
 
-test("El peso del árbol genrado para calcular las rutas entre Salobreña y Jete tiene un peso de 5",() => {
+test("El peso del árbol generado para calcular las rutas entre Salobreña y Jete tiene que ser 5",() => {
   expect(arbol.getPeso()).toBe(pesoArbol2);
 })
