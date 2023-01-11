@@ -6,3 +6,7 @@ automatizar:
   fichero: package.json
   orden: pnpm run
 
+test:
+  - /src/test/algoritmo.test.ts
+
+

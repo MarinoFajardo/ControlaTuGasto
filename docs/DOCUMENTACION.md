@@ -42,3 +42,19 @@ Para la elección del gestor de tareas se va a tener en cuenta la puntuación de
 - Añadir un gestor de tareas que sea capaz de realizar tareas más específicas. Si optamos por esto, el gestor de tareas específico más valorado es grunt, que cuenta con una valoración de 85, aunque su última actualización se realizó hace 7 meses, por lo que podría estar desactualizado. Su uso nos incorpora el archivo Gruntfile en la aplicación.
 
 Teniendo esto en cuenta, he decidido usar pnpm como gestor de tareas, ya que para lo que se va a realizar en el proyecto es suficiente y no nos genera nuevos ficheros en la aplicación, además de que cuenta con una mejor valoración y actualizaciones frecuentes. 
+
+
+## Test Runner
+A la hora de elegir el test runner para la aplicación se van a tener en cuenta una serie de criterios:
+- Instalar el menor número de herramientas.
+- Herramientas que usen tests en pararelo para ejecutarlos a mayor velocidad.
+- Usar herramientas actualizadas para evitar generar deuda técnica y que cuenten con una buena comunidad.
+- Usar test BDD.
+- Usar herramientas que contengan su propia biblioteca de aserciones.
+
+Las herramientas que cumplen con los criterios establecidos son las siguientes:
+- **Jasmine**: Podemos encontrar su documentación en el siguiente [enlace](https://jasmine.github.io/index.html). No ejecuta los test en paralelo aunque contiene su propia biblioteca de aserciones y puede usar test BDD. Posee una puntuación de 92 en [Snyk Advisor](https://snyk.io/advisor/npm-package/jasmine) y su última actualización fue hace 2 meses. Para poder usar Jasmine con Typescript sería necesario incorporar herramientas para complementarlo.
+- **Jest**: Podemos encontrar su documentación en el siguiente [enlace](https://jestjs.io/). Nos permite ejecutar test en paralelo, usa tests BDD y cuenta con su propia biblioteca de aserciones por lo que no será necesario instalar ninguna. Su última actualización se produjo hace 2 meses y cuenta con una puntuación de 89 en [Snyk Advisor](https://snyk.io/advisor/npm-package/jest). Para poder usar Jest con Typescript es necesario instalar ts-jest, lo que nos llevará a incorporar un fichero de configuración.
+- **Mocha**: Podemos encontrar su documentación en el siguiente [enlace](https://mochajs.org/). No trae incorporada biblioteca de aserciones por lo que sería necesario incorporarla más tarde. Su última actualización fue hace 1 mes y cuenta con una puntuación de 98 en [Snyk Advisor](https://snyk.io/advisor/npm-package/mocha). A partir de su versión 8.0 ejecuta los test en paralelo.
+
+Teniendo todo lo anterior en cuenta, voy a optar por usar Jest en la aplicación, ya que requiere únicamente de la instalación de ts-jest mientras que Jasmine requiere la instalación de más herramientas adicionales. Mocha sería también una buena opción, ya que es la más usada, pero su uso nos sumaría el inconveniente de tener que añadir una biblioteca de aserciones. Si hubiesemos querido optar por Mocha, su uso normalmente está ligago con Chai(que usa test BDD), aunque hay otras bibliotecas como Should o Expect.

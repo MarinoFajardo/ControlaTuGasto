@@ -1,7 +1,7 @@
 import {Tramo} from "./tramo"
 import {Parada} from "./parada"
 
-class Ruta{
+export class Ruta{
 
     private fechaRuta: Date;
     private origenRuta: Parada;
@@ -30,4 +30,26 @@ class Ruta{
       } , 0);
     }
 
+    public getPrecioTotal(): number {
+      return this.precioTotal;
+    }
+
+    public getTiempoTotal(): number {
+      return this.tiempoTotal;
+    }
+
+    public getOrigenRuta(): Parada{
+      return this.origenRuta;
+    }
+
+    public getDestinoRuta(): Parada{
+      return this.destinoRuta;
+    }
+
+    public getFechaRuta(): Date{
+      return this.fechaRuta;
+    }
+    public getTramos(): Tramo[]{
+      return this.tramos;
+    }
 }

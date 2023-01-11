@@ -7,4 +7,12 @@ export class Parada{
         this.idParada=idParada;
         this.ciudad = ciudad;
     }
+    
+    public getidParada():string{
+        return this.idParada;
+    }
+
+    public getCiudad():string{
+        return this.ciudad;
+    }
 }
