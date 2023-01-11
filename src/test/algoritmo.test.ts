@@ -4,6 +4,7 @@ import {Arbol, Nodo} from "../arbol";
 import { Tramo } from "../tramo";
 import { Parada } from "../parada";
 
+
 //Función que extrae los elementos del json y los convierte en un array de tramos.
 function tramosData():Tramo[]{
   let salida:Tramo[] = new Array();
@@ -16,21 +17,27 @@ function tramosData():Tramo[]{
 
 var array:Tramo[] = tramosData();
 
-const numElementos: number = 12;
+const pesoArbol1:number = 13;
+const pesoArbol2:number = 13;
+
 const origen: string = "Granada";
+const origen2: string = "Salobreña";
 const destino: string = "Otivar";
 const destino2: string = "Jete";
-const valorDeseado: number = 4.30;
+const valorDeseado: number = 4.20;
 
 const raiz:Nodo = obtenerNodoRaíz(origen,array);
-var arbol:Arbol = new Arbol(raiz);
+const raiz2:Nodo = obtenerNodoRaíz(origen2,array);
 
-arbol.generarArbol(array,destino);
+const arbol:Arbol = new Arbol(raiz,destino,array);
+const arbol2:Arbol = new Arbol(raiz2,destino2,array);
 
-console.log(arbol.getPeso());
 
+test("La ruta más barata entre Granada y Otívar tiene un valor de 4.20",() => {
+  expect(rutaMasBarata(origen,destino,arbol,array)).toBe(valorDeseado);
+})
 
-test("La ruta más barata tiene un valor de 4.30",() => {
+test("La ruta más barata entre Salobreña y Jete tiene un valor de 2.10",() => {
   expect(rutaMasBarata(origen,destino,arbol,array)).toBe(valorDeseado);
 })
 
@@ -38,6 +45,10 @@ test("El nodo raíz tiene que ser el origen de la ruta",() => {
   expect(arbol.getRoot().parada?.getCiudad()).toBe(origen);
 })
 
-test("El valor de la ruta de una parada anterior tiene que ser menor",() => {
-  expect(rutaMasBarata(origen,destino,arbol,array) > rutaMasBarata(origen,destino2,arbol,array)).toBe(true);
+test("El peso del árbol genrado para calcular las rutas entre Granada y Otívar tiene un peso de 13",() => {
+  expect(arbol.getPeso()).toBe(pesoArbol1);
+})
+
+test("El peso del árbol genrado para calcular las rutas entre Salobreña y Jete tiene un peso de 5",() => {
+  expect(arbol.getPeso()).toBe(pesoArbol2);
 })
