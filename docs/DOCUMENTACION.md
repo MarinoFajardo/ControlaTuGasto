@@ -43,16 +43,18 @@ Para la elección del gestor de tareas se va a tener en cuenta la puntuación de
 
 Teniendo esto en cuenta, he decidido usar pnpm como gestor de tareas, ya que para lo que se va a realizar en el proyecto es suficiente y no nos genera nuevos ficheros en la aplicación, además de que cuenta con una mejor valoración y actualizaciones frecuentes. 
 
+
 ## Test Runner
 A la hora de elegir el test runner para la aplicación se van a tener en cuenta una serie de criterios:
-- Incluir el menor número de herramientas posibles en la aplicación.
-- Usar herramientas actualizadas para evitar generar deuda técnica.
+- Instalar el menor número de herramientas.
+- Herramientas que usen tests en pararelo para ejecutarlos a mayor velocidad.
+- Usar herramientas actualizadas para evitar generar deuda técnica y que cuenten con una buena comunidad.
 - Usar test BDD.
+- Usar herramientas que contengan su propia biblioteca de aserciones.
 
 Las herramientas que cumplen con los criterios establecidos son las siguientes:
-- **Jasmine**: Trae incluida una biblioteca de aserciones, por lo que ya no sería necesaria su incorporación, su última actualización se realizó hace 26 días y usa BDD aunque también puede usar unitest y TDD. No dispone de intérprete de Typescript, por lo que es necesario instalar la herramienta junto a Webpack.
-- **Jest**: Al igual que Jasmine trae incorporada su propia biblioteca de aserciones, por lo que no sería necesario incluir más herramientas a la aplicación. Su última actualización fue hace 16 días y usa BDD. Jest no dispone de intérprete de Typescript, por lo que es necesario instalar la herramienta junto a Babel.
-- **Mocha**: No trae incorporada biblioteca de aserciones por lo que sería necesario incorporar más tarde alguna biblioteca como chai. Su última actualización fue hace 1 mes y si usamos Chai como biblioteca de aserciones los test serán BDD.
-- **Node Test**: Node ha incorporado en su versión 19.2.0 un test runner propio con el que no necesitamos instalar ninguna herramienta, pero como se indica en su página, este no se encuentra en una fase de desarrollo estable por lo que, nos podría ocasionar problemas de bugs.
+- **Jasmine**: Podemos encontrar su documentación en el siguiente [enlace](https://jasmine.github.io/index.html). No ejecuta los test en paralelo aunque contiene su propia biblioteca de aserciones y puede usar test BDD. Posee una puntuación de 92 en [Snyk Advisor](https://snyk.io/advisor/npm-package/jasmine) y su última actualización fue hace 2 meses. Para poder usar Jasmine con Typescript sería necesario incorporar herramientas para complementarlo.
+- **Jest**: Podemos encontrar su documentación en el siguiente [enlace](https://jestjs.io/). Nos permite ejecutar test en paralelo, usa tests BDD y cuenta con su propia biblioteca de aserciones por lo que no será necesario instalar ninguna. Su última actualización se produjo hace 2 meses y cuenta con una puntuación de 89 en [Snyk Advisor](https://snyk.io/advisor/npm-package/jest). Para poder usar Jest con Typescript es necesario instalar ts-jest, lo que nos llevará a incorporar un fichero de configuración.
+- **Mocha**: Podemos encontrar su documentación en el siguiente [enlace](https://mochajs.org/). No trae incorporada biblioteca de aserciones por lo que sería necesario incorporarla más tarde. Su última actualización fue hace 1 mes y cuenta con una puntuación de 98 en [Snyk Advisor](https://snyk.io/advisor/npm-package/mocha). A partir de su versión 8.0 ejecuta los test en paralelo.
 
-Teniendo todo esto en cuenta y conociendo que será necesaria la instalación de un intérprete para Typescript, voy a optar por usar Jest. Se podría haber optado igualmente por Jasmine, ya que cumple todos los criterios, pero he optado por Jest al tener una puntuación un poco superior en [Snyk Advisor](https://snyk.io/advisor/).
+Teniendo todo lo anterior en cuenta, voy a optar por usar Jest en la aplicación, ya que requiere únicamente de la instalación de ts-jest mientras que Jasmine requiere la instalación de más herramientas adicionales. Mocha sería también una buena opción, ya que es la más usada, pero su uso nos sumaría el inconveniente de tener que añadir una biblioteca de aserciones. Si hubiesemos querido optar por Mocha, su uso normalmente está ligago con Chai(que usa test BDD), aunque hay otras bibliotecas como Should o Expect.
