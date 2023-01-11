@@ -50,8 +50,9 @@ A la hora de elegir el test runner para la aplicación se van a tener en cuenta 
 - Usar test BDD.
 
 Las herramientas que cumplen con los criterios establecidos son las siguientes:
-- **Jasmine**: Trae incluida una biblioteca de aserciones, por lo que ya no sería necesaria su incorporación, su última actualización se realizó hace 26 días y usa BDD aunque también puede usar unitest y TDD.
-- **Jest**: Al igual que Jasmine trae incorporada su propia biblioteca de aserciones, por lo que no sería necesario incluir más herramientas a la aplicación. Su última actualización fue hace 16 días y usa BDD.
+- **Jasmine**: Trae incluida una biblioteca de aserciones, por lo que ya no sería necesaria su incorporación, su última actualización se realizó hace 26 días y usa BDD aunque también puede usar unitest y TDD. No dispone de intérprete de Typescript, por lo que es necesario instalar la herramienta junto a Webpack.
+- **Jest**: Al igual que Jasmine trae incorporada su propia biblioteca de aserciones, por lo que no sería necesario incluir más herramientas a la aplicación. Su última actualización fue hace 16 días y usa BDD. Jest no dispone de intérprete de Typescript, por lo que es necesario instalar la herramienta junto a Babel.
 - **Mocha**: No trae incorporada biblioteca de aserciones por lo que sería necesario incorporar más tarde alguna biblioteca como chai. Su última actualización fue hace 1 mes y si usamos Chai como biblioteca de aserciones los test serán BDD.
+- **Node Test**: Node ha incorporado en su versión 19.2.0 un test runner propio con el que no necesitamos instalar ninguna herramienta, pero como se indica en su página, este no se encuentra en una fase de desarrollo estable por lo que, nos podría ocasionar problemas de bugs.
 
-Teniendo todo esto en cuenta y para no tener que añadir más herramientas voy a optar por usar **Jest** en la aplicación y de esta manera tener ya la biblioteca de aserciones incluida. Se podría haber optado igualmente por Jasmine, ya que cumple todos los criterios, pero he optado por Jest al tener una puntuación un poco superior en [Snyk Advisor](https://snyk.io/advisor/).
+Teniendo todo esto en cuenta y conociendo que será necesaria la instalación de un intérprete para Typescript, voy a optar por usar Jest. Se podría haber optado igualmente por Jasmine, ya que cumple todos los criterios, pero he optado por Jest al tener una puntuación un poco superior en [Snyk Advisor](https://snyk.io/advisor/).
