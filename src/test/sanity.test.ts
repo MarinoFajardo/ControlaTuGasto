@@ -1,8 +1,12 @@
 import tramos from "./data/datos.json"
+import { expect } from "chai";
+import 'mocha';
 
 const totalTramos: number = 12;
 
-test("Se han leido el número correcto de Tramos", () => {
-  expect(tramos.length).toBe(totalTramos);
+describe("Se han leido el número correcto de Tramos", () => {
+  it("Debe devolver el número total de tramos", () => {
+    expect(tramos.length).to.equal(totalTramos);
+  });
 });
 
