@@ -43,6 +43,18 @@ Para la elección del gestor de tareas se va a tener en cuenta la puntuación de
 
 Teniendo esto en cuenta, he decidido usar pnpm como gestor de tareas, ya que para lo que se va a realizar en el proyecto es suficiente y no nos genera nuevos ficheros en la aplicación, además de que cuenta con una mejor valoración y actualizaciones frecuentes. 
 
+## Librería de Aserciones
+A la hora de elegir una biblioteca de aserciones vamos a tener en cuenta lo siguiente:
+- Uso de test BDD.
+- Usar librerías actualizadas para evitar generar deuda técnica.
+- Librerías que puedan usarse con Typescript.
+
+Con los criterios descritos anteriormente, las librerías que más se ajustan son:
+- **Chai**: Podemos encontrar su documentación en el siguiente [enlace](https://www.chaijs.com/). Librería de aserciones más usada, cuenta con una puntuación de 100 en [Snyk Advisor](https://snyk.io/advisor/npm-package/chai) y su última actualización fue hace 2 meses. Funciona sin problema con Typecript y usa tests BDD.
+- **ShouldJS**: Podemos encontrar su documentación en el siguiente [enlace](https://shouldjs.github.io/). Actualmente, cuenta con una puntuación de 58 en [Snyk Advisor](https://snyk.io/advisor/npm-package/should) y su última actualización fue hace 4 años, por lo que no está muy actualizado. No tiene problemas de compatibilidad con Typescript y usa tests BDD.
+- **ExpectJS**: Podemos encontrar su documentación en el siguiente [enlace](https://github.com/Automattic/expect.js/). Tiene una puntuación de 52 en [Snyk Advisor](https://snyk.io/advisor/npm-package/expect.js), su última actualización fue hace 9 añosy su uso ha disminuido bastante. Puede ser usado con Typescript y usa tests BDD.
+
+Teniendo esto en cuenta, la mejor opción es **Chai**, ya que cumple todos los criterios, está mucho más actualizada y tiene una puntuación mayor en Snyk Advisor.
 
 ## Test Runner
 A la hora de elegir el test runner para la aplicación se van a tener en cuenta una serie de criterios:
