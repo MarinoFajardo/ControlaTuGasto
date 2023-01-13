@@ -7,6 +7,6 @@ automatizar:
   orden: pnpm run
 
 test:
-  - /src/test/algoritmo.test.ts
+  - src/test/algoritmo.test.ts
 
 
