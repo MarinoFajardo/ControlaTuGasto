@@ -24,9 +24,10 @@ export function obtenerNodoRaíz(origen:string,tramos:Tramo[]): Nodo{
   }
 }
 
-export function rutaMasBarata(origen : string , destino: string, arbol: Arbol, tramos:Tramo[]):number{
+export function rutaMasBarata(origen : string , destino: string, tramos:Tramo[]):number{
   let minimo : number = 100;
   let acumulado: number = 0;
+  let arbol = new Arbol(obtenerNodoRaíz(origen,tramos),destino,tramos);
   let nodoactual:Nodo = arbol.getRoot();
   let recorridos: number = 1;
 
