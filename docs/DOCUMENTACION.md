@@ -42,3 +42,33 @@ Para la elección del gestor de tareas se va a tener en cuenta la puntuación de
 - Añadir un gestor de tareas que sea capaz de realizar tareas más específicas. Si optamos por esto, el gestor de tareas específico más valorado es grunt, que cuenta con una valoración de 85, aunque su última actualización se realizó hace 7 meses, por lo que podría estar desactualizado. Su uso nos incorpora el archivo Gruntfile en la aplicación.
 
 Teniendo esto en cuenta, he decidido usar pnpm como gestor de tareas, ya que para lo que se va a realizar en el proyecto es suficiente y no nos genera nuevos ficheros en la aplicación, además de que cuenta con una mejor valoración y actualizaciones frecuentes. 
+
+## Librería de Aserciones
+A la hora de elegir una biblioteca de aserciones vamos a tener en cuenta lo siguiente:
+- Uso de test BDD.
+- Usar librerías actualizadas para evitar generar deuda técnica.
+- Librerías que puedan usarse con TypeScript.
+
+Con los criterios descritos anteriormente, las librerías que más se ajustan son:
+- **Chai**: Podemos encontrar su documentación en el siguiente [enlace](https://www.chaijs.com/). Librería de aserciones más usada, cuenta con una puntuación de 100 en [Snyk Advisor](https://snyk.io/advisor/npm-package/chai) y su última actualización fue hace 2 meses. Funciona sin problema con TypeScript y usa tests BDD.
+- **ShouldJS**: Podemos encontrar su documentación en el siguiente [enlace](https://shouldjs.github.io/). Actualmente, cuenta con una puntuación de 58 en [Snyk Advisor](https://snyk.io/advisor/npm-package/should) y su última actualización fue hace 4 años, por lo que no está muy actualizado. No tiene problemas de compatibilidad con TypeScript y usa tests BDD.
+- **ExpectJS**: Podemos encontrar su documentación en el siguiente [enlace](https://github.com/Automattic/expect.js/). Tiene una puntuación de 52 en [Snyk Advisor](https://snyk.io/advisor/npm-package/expect.js), su última actualización fue hace 9 años y su uso ha disminuido bastante. Puede ser usado con TypeScript y usa tests BDD.
+- **Unexpected**: Podemos encontrar su documentación en el siguiente [enlace](https://unexpected.js.org/). Actualmente, cuenta con una puntuación de 81 en [Snyk Advisor](https://snyk.io/advisor/npm-package/unexpected) y su última actualización fue hace 1 mes, por lo que cuenta con actualizaciones frecuentes. No tiene problemas de compatibilidad con TypeScript y usa test BDD.
+- **Earl**: Podemos encontrar su documentación en el siguiente [enlace](https://earljs.dev/). Tiene una puntuación de 59 en [Snyk Advisor](https://snyk.io/advisor/npm-package/earljs) y su última actualización fue hace 10 meses. Es una biblioteca específica de TypeScript y usa test BDD.
+- **Typed-Assert**: Podemos encontrar su documentación en el siguiente [enlace](https://github.com/elierotenberg/typed-assert). Tiene una puntuación de 71 en  [Snyk Advisor](https://snyk.io/advisor/npm-package/typed-assert) y su última actualización fue hace 11 meses. Es una biblioteca de aserciones específica de TypeScript y usa test BDD.
+
+Teniendo esto en cuenta, la mejor opción es **Chai**, ya que cumple todos los criterios, está mucho más actualizada y tiene mejor puntuación que las bibliotecas específicas de TypeScript.
+
+## Test Runner
+A la hora de elegir el test runner para la aplicación se van a tener en cuenta una serie de criterios:
+- Instalar el menor número de herramientas.
+- Herramientas que usen tests en paralelo para ejecutarlos a mayor velocidad.
+- Usar herramientas actualizadas para evitar generar deuda técnica y que cuenten con una buena comunidad.
+- Usar herramientas compatibles con TypeScript.
+
+Las herramientas que cumplen con los criterios establecidos son las siguientes:
+- **Jasmine**: Podemos encontrar su documentación en el siguiente [enlace](https://jasmine.github.io/index.html). No ejecuta los test en paralelo, aunque contiene su propia biblioteca de aserciones. Posee una puntuación de 92 en [Snyk Advisor](https://snyk.io/advisor/npm-package/jasmine) y su última actualización fue hace 2 meses. Para poder usar Jasmine con TypeScript sería necesario incorporar herramientas para complementarlo.
+- **Jest**: Podemos encontrar su documentación en el siguiente [enlace](https://jestjs.io/). Nos permite ejecutar test en paralelo y cuenta con su propia biblioteca de aserciones, por lo que no será necesario instalar ninguna. Su última actualización se produjo hace 2 meses y cuenta con una puntuación de 89 en [Snyk Advisor](https://snyk.io/advisor/npm-package/jest). Para poder usar Jest con TypeScript es necesario instalar ts-jest, lo que nos llevará a incorporar un fichero de configuración.
+- **Mocha**: Podemos encontrar su documentación en el siguiente [enlace](https://mochajs.org/). No trae incorporada biblioteca de aserciones por lo que sería necesario incorporarla más tarde. Su última actualización fue hace 1 mes y cuenta con una puntuación de 98 en [Snyk Advisor](https://snyk.io/advisor/npm-package/mocha). A partir de su versión 8.0 ejecuta los test en paralelo. Para el uso de TypeScript no habría que incluir herramientas adicionales ni ficheros de configuración.
+
+Teniendo en cuenta lo anterior, voy a optar por usar en el proyecto **Mocha**, ya que en conjunto con Chai es el que más se adapta a los criterios y es el más sencillo de los tres a la hora de usar TypeScript.

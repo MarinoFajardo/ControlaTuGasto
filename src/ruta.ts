@@ -1,7 +1,7 @@
 import {Tramo} from "./tramo"
 import {Parada} from "./parada"
 
-class Ruta{
+export class Ruta{
 
     private fechaRuta: Date;
     private origenRuta: Parada;
@@ -29,5 +29,4 @@ class Ruta{
         return + current.getTiempoTramo()
       } , 0);
     }
-
 }

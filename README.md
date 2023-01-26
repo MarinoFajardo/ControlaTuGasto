@@ -1,13 +1,16 @@
 # ControlaTuGasto
 
-## Instalación de pnpm
-Para inicializar el proyecto hay que instalar pnpm con la siguiente orden:
+## Instalación de las dependencias del proyecto
+Para inicializar el proyecto primero hay que instalar [pnpm](https://pnpm.io/installation). Una vez instalado, debemos usar la orden:
 - pnpm install
 
 ## Comprobación de la sintaxis
 Para realizar la comprobación de la sintaxis ejecutar la siguiente orden:
 - pnpm run check
 
+## Ejecución de los test
+Para ejecutar los test de la aplicación se hará uso de la siguiente orden:
+- pnpm run test
 ## Descripción General
 Durante la asignatura se va a desarrollar una aplicación para calcuar la ruta de autobús más óptima para ir desde un origen a un destino.
 
