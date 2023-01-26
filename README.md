@@ -1,6 +1,6 @@
 # ControlaTuGasto
 
-## Instalación de pnpm
+## Instalación de las dependencias del proyecto
 Para inicializar el proyecto primero hay que instalar [pnpm](https://pnpm.io/installation). Una vez instalado, debemos usar la orden:
 - pnpm install
 

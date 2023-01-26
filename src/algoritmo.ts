@@ -5,7 +5,7 @@ import { Arbol } from "./arbol"
 
 
 export function obtenerNodoRaíz(origen:string,tramos:Tramo[]): Nodo{
-  let nodo : Nodo = {
+  const nodo : Nodo = {
     parada : null,
     coste : null,
     padre : null,
