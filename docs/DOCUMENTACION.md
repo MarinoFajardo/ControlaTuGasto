@@ -72,3 +72,23 @@ Las herramientas que cumplen con los criterios establecidos son las siguientes:
 - **Mocha**: Podemos encontrar su documentación en el siguiente [enlace](https://mochajs.org/). No trae incorporada biblioteca de aserciones por lo que sería necesario incorporarla más tarde. Su última actualización fue hace 1 mes y cuenta con una puntuación de 98 en [Snyk Advisor](https://snyk.io/advisor/npm-package/mocha). A partir de su versión 8.0 ejecuta los test en paralelo. Para el uso de TypeScript no habría que incluir herramientas adicionales ni ficheros de configuración.
 
 Teniendo en cuenta lo anterior, voy a optar por usar en el proyecto **Mocha**, ya que en conjunto con Chai es el que más se adapta a los criterios y es el más sencillo de los tres a la hora de usar TypeScript.
+
+## Elección de la imagen Base
+Para la elección de la imagen base vamos a tener en cuenta los siguientes criterios:
+- El tamaño de la imagen es importante, por lo que imágenes con tamaño demasiado grande necesitarán un almacenamiento mayor.
+- La frescura de la imagen, es decir, usar imágenes que estén actualizadas.
+- La imagen elegida debe contener las herramientas necesarias para el proyecto como Node, npm(pnpm preferiblemente) y TypeScript.
+
+Teniendo en cuenta estos requisitos tenemos las siguientes opciones:
+## Docker OS images:
+- Estas imágenes cuentan únicamente con el Sistema Operativo, por lo que habría que instalar todas las herramientas:
+   - **Ubuntu**: Imagen oficial de Ubuntu, podemos encontrar la documentación en el siguiente [enlace](https://hub.docker.com/_/ubuntu). Su última actualización fue hace 2 meses y tiene un peso comprimido de 29.02 MB. 
+  - **Alpine**: Imagen oficial de Alpine, podemos encontrar su documentación en el siguiente [enlace](https://hub.docker.com/_/alpine). Su última actualización fue hace 17 días y tiene un peso comprimido de 3.25 MB.
+ ## Imagen Oficial de Node:
+- Al usar Node dentro de nuestra aplicación, podemos optar por usar sus [imágenes oficiales](https://hub.docker.com/_/node):
+  - **node:latest**: Última versión de node, por lo que es inestable. Tiene un peso comprimido de 353.67 MB, usa una distribución Debian estándar y su última actualización fue hace 16 horas.
+  - **node:lts**: Última versión estable de Node(18.13.0). Tiene un peso comprimido de 352.69 MB, usa una distribución estándar de Debian y su última actualización fue hace 15 días.
+  - **node:lts-slim**: Imagen node:lts que contiene únicamente los paquetes necesarios para instalar node. Tiene un peso comprimido de 75.97 MB y su última actualización fue hace 15 días.
+  - **node:lts-alpine**: Imagen basada en una distribución Alpine. Tiene un peso comprimido de 50.21 MB y su última actualización fue hace 17 días.
+
+Comparando todas las alternativas, es mejor opción, aunque tengan un tamaño base mayor, utilizar las imágenes oficiales de Node, ya que nos traen instaladas las herramientas necesarias para usar Node. Dentro de estas imágenes, las mejores opciones son **node:lts-slim** y **node:lts-alpine**. La elección de cualquiera de estas dos imágenes cumpliría con todos los criterios, pero voy a optar por emplear **node:lts:slim** debido a que únicamente instala lo necesario para usar Node aunque nos instale Yarn(que no usamos en la aplicación y que también es instalado en la versión de Alpine).
