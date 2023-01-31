@@ -21,7 +21,6 @@ USER node
 #instalación de dependencias
 RUN npm install --global pnpm
 RUN pnpm install
-RUN rm package.json
 
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm", "run","test"]
