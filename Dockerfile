@@ -2,13 +2,14 @@
 FROM node:lts-slim
 
 #Ejecuciones en modo root
-RUN mkdir -p /app/test
+RUN mkdir -p /app/test /.npm
 
 WORKDIR /app/test
 
 COPY package.json pnpm-lock.yaml ./
 
 #Cambio de directorio de npm para poder instalar pnpm
+RUN chown -R 1001:0 "/.npm"
 ENV NPM_CONFIG_PREFIX="/home/node/.npm-global"
 ENV PNPM_HOME="/.pnpm"
 ENV PATH="${PATH}:${PNPM_HOME}:/home/node/.npm-global/bin"
@@ -20,6 +21,7 @@ USER node
 #instalación de dependencias
 RUN npm install --global pnpm
 RUN pnpm install
+RUN rm package.json
 
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm", "run","test"]
