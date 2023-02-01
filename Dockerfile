@@ -2,17 +2,18 @@
 FROM node:lts-slim
 
 #Ejecuciones en modo root
-RUN mkdir -p /home/app /.npm
-RUN chown -R node /home/app
+RUN mkdir -p /app/test /.npm
+RUN chown -R node /app
 
-WORKDIR /home/app
+WORKDIR /app/test
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json /app
 
 #Cambio de directorio de npm para poder instalar pnpm
 RUN chown -R 1001:1001 "/.npm"
-ENV NPM_CONFIG_PREFIX=/home/app/.npm-global
-ENV PATH=$PATH:/home/app/.npm-global/bin
+ENV NPM_CONFIG_PREFIX="/home/node/.npm-global"
+ENV PNPM_HOME="/.pnpm"
+ENV PATH="${PATH}:${PNPM_HOME}:/home/node/.npm-global/bin"
 
 #Cambio de usuario, node es el usuario generico de la imagen
 USER node
