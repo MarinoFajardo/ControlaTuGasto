@@ -7,7 +7,7 @@ RUN chown -R node /home/app
 
 WORKDIR /home/app
 
-COPY package.json ./
+COPY package.json pnpm-lock.yaml ./
 
 #Cambio de directorio de npm para poder instalar pnpm
 ENV NPM_CONFIG_PREFIX=/home/app/.npm-global
@@ -19,6 +19,6 @@ USER node
 #instalación de dependencias
 RUN npm install -g pnpm
 RUN pnpm install
-
+RUN rm package.json pnpm-lock.yaml
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm","test"]
