@@ -2,7 +2,7 @@
 FROM node:lts-slim
 
 #Ejecuciones en modo root
-RUN mkdir -p /app/test /.npm
+RUN mkdir -p /app/test
 RUN chown -R node /app
 
 WORKDIR /app/test
@@ -10,7 +10,6 @@ WORKDIR /app/test
 COPY package.json /app
 
 #Cambio de directorio de npm para poder instalar pnpm
-RUN chown -R 1001:1001 "/.npm"
 ENV NPM_CONFIG_PREFIX="/home/node/.npm-global"
 ENV PNPM_HOME="/.pnpm"
 ENV PATH="${PATH}:${PNPM_HOME}:/home/node/.npm-global/bin"
