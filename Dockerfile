@@ -8,15 +8,16 @@ WORKDIR /app
 
 COPY package.json /app
 #Cambio de directorio de npm para poder instalar pnpm
-ENV NPM_CONFIG_PREFIX=/home/app/.npm-global
-ENV PATH=$PATH:/home/app/.npm-global/bin
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
 
 #Cambio de usuario, node es el usuario generico de la imagen
 RUN chown -R node /app
 USER node
 
 #instalación de dependencias
-RUN npm install -g pnpm && pnpm install
+RUN npm install -g pnpm \
+    && pnpm install
 WORKDIR /app/test
 
 #Ejecucion de los test
