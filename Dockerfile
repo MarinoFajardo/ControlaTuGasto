@@ -21,7 +21,6 @@ USER node
 #instalación de dependencias
 RUN npm install -g pnpm
 RUN pnpm install
-RUN /bin/bash
 
 #Ejecucion de los test
-ENTRYPOINT [ "pnpm", "run","test"]
+#ENTRYPOINT [ "pnpm", "run","test"]
