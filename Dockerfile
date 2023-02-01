@@ -1,17 +1,17 @@
 # Uso de imagen base
-FROM node:lts-slim
+FROM node:lts-bullseye-slim
 
 #Ejecuciones en modo root
-RUN mkdir -p /app/test
-RUN chown -R node /app
+RUN mkdir -p /home/app
+RUN chown -R node /home/app
 
-WORKDIR /app/test
+WORKDIR /home/app
 
-COPY package.json /app
+COPY package.json ./
 
 #Cambio de directorio de npm para poder instalar pnpm
-ENV NPM_CONFIG_PREFIX=/app/.npm-global
-ENV PATH=$PATH:/app/.npm-global/bin
+ENV NPM_CONFIG_PREFIX=/home/app/.npm-global
+ENV PATH=$PATH:/home/app/.npm-global/bin
 
 #Cambio de usuario, node es el usuario generico de la imagen
 USER node
