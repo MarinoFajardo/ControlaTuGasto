@@ -8,7 +8,7 @@
   },
   "scripts": {
     "check": "tsc --noEmit",
-    "test": "npx mocha -r ts-node/register src/test/*.ts"
+    "test": "mocha -r ts-node/register src/test/*.ts"
   },
   "repository": {
     "type": "git",
