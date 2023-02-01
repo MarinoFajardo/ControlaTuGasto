@@ -7,7 +7,7 @@ RUN chown -R node /home/app
 
 WORKDIR /home/app
 
-COPY package.json /home/app
+COPY package.json pnpm-lock.yaml ./
 
 #Cambio de directorio de npm para poder instalar pnpm
 RUN chown -R 1001:1001 "/.npm"
@@ -20,6 +20,7 @@ USER node
 #instalación de dependencias
 RUN npm install -g pnpm
 RUN pnpm install
+RUN /bin/bash
 
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm", "run","test"]
