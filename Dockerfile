@@ -17,8 +17,7 @@ ENV PATH=$PATH:/home/app/.npm-global/bin
 USER node
 
 #instalación de dependencias
-RUN npm install -g pnpm
-RUN pnpm install
-RUN rm package.json pnpm-lock.yaml
+RUN npm install -g pnpm && pnpm install
+
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm","test"]
