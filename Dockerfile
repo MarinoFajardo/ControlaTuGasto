@@ -24,3 +24,4 @@ RUN pnpm install
 
 #Ejecucion de los test
 #ENTRYPOINT [ "pnpm", "run","test"]
+ENTRYPOINT [ "/bin/bash" ]
