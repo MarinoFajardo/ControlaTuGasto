@@ -1,12 +1,12 @@
 # Uso de imagen base
-FROM node:lts-bullseye-slim
+FROM node:lts-slim
 
 #Ejecuciones en modo root
 RUN mkdir -p /app/test
 
 WORKDIR /app
 
-COPY package.json /app
+COPY package.json /app/test
 #Cambio de directorio de npm para poder instalar pnpm
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH=$PATH:/home/node/.npm-global/bin
