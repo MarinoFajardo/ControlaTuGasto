@@ -7,7 +7,9 @@ RUN mkdir -p /app/test \
 
 WORKDIR /app/test
 
+# Copiamos para instalar las dependencias
 COPY package.json pnpm-lock.yaml ./
+
 #Cambio de directorio de npm para poder instalar pnpm
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PNPM_HOME=/.pnpm
@@ -21,5 +23,7 @@ RUN npm install -g pnpm \
     && pnpm install \
     && rm package.json pnpm-lock.yaml
 
+
+RUN ls /app/test
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm" , "run" , "test" ]
