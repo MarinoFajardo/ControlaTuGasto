@@ -1,9 +1,9 @@
 # Uso de imagen base
-FROM node:lts-slim
+FROM node:lts-alpine
 
 #Ejecuciones en modo root
 RUN mkdir -p /app/test \
-    && chown -R node /app/test
+    && chown -R node /app
 
 WORKDIR /app/test
 
@@ -20,10 +20,7 @@ USER node
 
 #instalación de dependencias
 RUN npm install -g pnpm \
-    && pnpm install \
-    && rm package.json pnpm-lock.yaml
+    && pnpm install
 
-
-RUN ls /app/test
 #Ejecucion de los test
 ENTRYPOINT [ "pnpm" , "run" , "test" ]
