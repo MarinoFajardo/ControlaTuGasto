@@ -1,5 +1,5 @@
 # Uso de imagen base
-FROM node:lts-alpine
+FROM node:lts-slim
 
 #Ejecuciones en modo root
 RUN mkdir -p /home/node/app/test && chown -R node:node /home/node/app
@@ -24,4 +24,4 @@ RUN npm install -g pnpm \
 COPY --chown=node:node . .
 
 #Ejecucion de los test
-ENTRYPOINT [ "pnpm" , "run" ]
+ENTRYPOINT ["pnpm","test"]
