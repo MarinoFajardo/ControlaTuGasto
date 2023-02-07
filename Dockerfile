@@ -2,10 +2,9 @@
 FROM node:lts-alpine
 
 #Ejecuciones en modo root
-RUN mkdir -p /app/test \
-    && chown -R node /app
+RUN mkdir -p /home/node/app/test && chown -R node:node /home/node/app
 
-WORKDIR /app/test
+WORKDIR /home/node/app
 
 # Copiamos para instalar las dependencias
 COPY package.json pnpm-lock.yaml ./
@@ -22,5 +21,7 @@ USER node
 RUN npm install -g pnpm \
     && pnpm install
 
+COPY --chown=node:node . .
+
 #Ejecucion de los test
-ENTRYPOINT [ "pnpm" , "run" , "test" ]
+ENTRYPOINT [ "pnpm" , "run" ]
