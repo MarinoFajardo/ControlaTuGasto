@@ -10,9 +10,9 @@ WORKDIR /home/node/app
 COPY package.json pnpm-lock.yaml ./
 
 #Cambio de directorio de npm para poder instalar pnpm
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV NPM_CONFIG_PREFIX=/home/node/app/.npm-global
 ENV PNPM_HOME=/.pnpm
-ENV PATH=${PATH}:${PNPM_HOME}:/home/node/.npm-global/bin
+ENV PATH=${PATH}:${PNPM_HOME}:/home/node/app/.npm-global/bin
 
 #Cambio de usuario, node es el usuario generico de la imagen
 USER node
