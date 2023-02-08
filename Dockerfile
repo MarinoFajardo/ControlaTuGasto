@@ -21,7 +21,5 @@ USER node
 RUN npm install -g pnpm \
     && pnpm install
 
-COPY --chown=node:node . .
-
 #Ejecucion de los test
 ENTRYPOINT ["pnpm","test"]
