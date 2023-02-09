@@ -4,7 +4,7 @@ RUN mkdir -p /app
 
 WORKDIR /app/test
 
-COPY package.json pnpm-lock.yaml ../
+COPY package.json pnpm-lock.yaml ./
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PNPM_HOME=/.pnpm
