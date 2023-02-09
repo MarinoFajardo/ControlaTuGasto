@@ -2,7 +2,7 @@ FROM node:lts-slim
 
 RUN mkdir -p /app
 
-WORKDIR /app
+WORKDIR /app/test
 
 COPY package.json pnpm-lock.yaml ./
 
