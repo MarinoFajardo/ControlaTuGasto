@@ -14,6 +14,7 @@ ENV PATH=${PATH}:${PNPM_HOME}:/home/node/.npm-global/bin
 USER node
 
 RUN npm install -g pnpm \
-    && pnpm install
+    && pnpm install \
+    && rm package.json pnpm-lock.yaml
 
 ENTRYPOINT ["pnpm","test"]
