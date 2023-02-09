@@ -3,10 +3,10 @@ FROM node:lts-slim
 
 #Ejecuciones en modo root
 RUN mkdir -p app/test \
-    && chown -R node:node /app
+    && chown -R node:node /app/test
 
 #Especificamos el directorio de trabajo
-WORKDIR /app
+WORKDIR /app/test
 
 # Copiamos en el directorio principal para instalar las dependencias
 COPY package.json pnpm-lock.yaml ./
