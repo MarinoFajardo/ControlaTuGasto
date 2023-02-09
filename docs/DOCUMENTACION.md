@@ -75,20 +75,22 @@ Teniendo en cuenta lo anterior, voy a optar por usar en el proyecto **Mocha**, y
 
 ## Elección de la imagen Base
 Para la elección de la imagen base vamos a tener en cuenta los siguientes criterios:
-- El tamaño de la imagen es importante, por lo que imágenes con tamaño demasiado grande necesitarán un almacenamiento mayor.
-- La frescura de la imagen, es decir, usar imágenes que estén actualizadas.
-- La imagen elegida debe contener las herramientas necesarias para el proyecto como Node, npm(pnpm preferiblemente) y TypeScript.
+- El tamaño de la imagen es importante, por lo que debemos elegir una imagen que no ocupe demasiado espacio.
+- La imagen debe contar con actualizaciones freuentes para no generar deuda técnica.
+- La imagen elegida debe contener las herramientas que serán necesarias para el proyecto(Node,pnpm).
 
 Teniendo en cuenta estos requisitos tenemos las siguientes opciones:
-## Docker OS images:
+### Docker OS images:
 - Estas imágenes cuentan únicamente con el Sistema Operativo, por lo que habría que instalar todas las herramientas:
-   - **Ubuntu**: Imagen oficial de Ubuntu, podemos encontrar la documentación en el siguiente [enlace](https://hub.docker.com/_/ubuntu). Su última actualización fue hace 2 meses y tiene un peso comprimido de 29.02 MB. 
-  - **Alpine**: Imagen oficial de Alpine, podemos encontrar su documentación en el siguiente [enlace](https://hub.docker.com/_/alpine). Su última actualización fue hace 17 días y tiene un peso comprimido de 3.25 MB.
- ## Imagen Oficial de Node:
+   - **Ubuntu**: Imagen oficial de Ubuntu, podemos encontrar la documentación en el siguiente [enlace](https://hub.docker.com/_/ubuntu). Su última actualización fue hace 2 meses y tiene un peso comprimido de 29.02 MB. No trae instalada ninguna herramienta, por lo que sería necesario instalarlas dentro de la imagen.
+  - **Alpine**: Imagen oficial de Alpine, podemos encontrar su documentación en el siguiente [enlace](https://hub.docker.com/_/alpine). Su última actualización fue hace 17 días y tiene un peso comprimido de 3.25 MB. Al igual que la imagen oficial de Ubuntu, no trae instalada ninguna herramienta.
+ ### Imagenes de Node:
 - Al usar Node dentro de nuestra aplicación, podemos optar por usar sus [imágenes oficiales](https://hub.docker.com/_/node):
   - **node:latest**: Última versión de node, por lo que es inestable. Tiene un peso comprimido de 353.67 MB, usa una distribución Debian estándar y su última actualización fue hace 16 horas.
   - **node:lts**: Última versión estable de Node(18.13.0). Tiene un peso comprimido de 352.69 MB, usa una distribución estándar de Debian y su última actualización fue hace 15 días.
   - **node:lts-slim**: Imagen node:lts que contiene únicamente los paquetes necesarios para instalar node. Tiene un peso comprimido de 75.97 MB y su última actualización fue hace 15 días.
   - **node:lts-alpine**: Imagen basada en una distribución Alpine. Tiene un peso comprimido de 50.21 MB y su última actualización fue hace 17 días.
+  
+Todas estas imágenes de node cuentan con el inconveniente de traer instalado yarn(que no usamos en la aplicación). Esta instalación nos supone de un peso en la imagen de 5.33 MB según [Snyk Advisor](https://snyk.io/advisor/npm-package/yarn) que generaría deuda técnica, aunque no tenga un peso demasiado significativo. Además, estas imágenes no traen instalado pnpm, por lo que habría que instalarlo también.
 
-Comparando todas las alternativas, es mejor opción, aunque tengan un tamaño base mayor, utilizar las imágenes oficiales de Node, ya que nos traen instaladas las herramientas necesarias para usar Node. Dentro de estas imágenes, las mejores opciones son **node:lts-slim** y **node:lts-alpine**. La elección de cualquiera de estas dos imágenes cumpliría con todos los criterios, pero voy a optar por emplear **node:lts:slim** debido a que únicamente instala lo necesario para usar Node aunque nos instale Yarn(que no usamos en la aplicación y que también es instalado en la versión de Alpine).
+Comparando todas las alternativas, es mejor opción, aunque tengan un tamaño base mayor, utilizar las imágenes oficiales de Node, ya que nos traen instaladas las herramientas necesarias para usar Node y no habría que instalarlas. Dentro de estas imágenes, las mejores opciones son **node:lts-slim** y **node:lts-alpine**. La elección de cualquiera de estas dos imágenes cumpliría con todos los criterios, ya que son las que tienen un peso menor, están actualizadas y cuentas con las herramientas instaladas para utilizar node, por lo que para el proyecto voy a optar por usar **node:lts-slim**, puesto que no tengo experiencia con distribuciones de Alpine.
