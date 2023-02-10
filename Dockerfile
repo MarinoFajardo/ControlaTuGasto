@@ -1,10 +1,10 @@
 FROM node:lts-slim
 
-RUN mkdir -p /app/test
+RUN mkdir -p /app
 
-WORKDIR /app/test
+WORKDIR /app
 
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json pnpm-lock.yaml ./
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
     PNPM_HOME=/.pnpm \ 
