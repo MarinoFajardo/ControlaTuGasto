@@ -84,13 +84,16 @@ Teniendo en cuenta estos requisitos tenemos las siguientes opciones:
 - Estas imágenes cuentan únicamente con el Sistema Operativo, por lo que habría que instalar todas las herramientas:
    - **Ubuntu**: Imagen oficial de Ubuntu, podemos encontrar la documentación en el siguiente [enlace](https://hub.docker.com/_/ubuntu). Su última actualización fue hace 2 meses y tiene un peso comprimido de 29.02 MB. No trae instalada ninguna herramienta, por lo que sería necesario instalarlas dentro de la imagen.
   - **Alpine**: Imagen oficial de Alpine, podemos encontrar su documentación en el siguiente [enlace](https://hub.docker.com/_/alpine). Su última actualización fue hace 17 días y tiene un peso comprimido de 3.25 MB. Al igual que la imagen oficial de Ubuntu, no trae instalada ninguna herramienta.
- ### Imagenes de Node:
+ ### Imagenes Oficiales de Node:
 - Al usar Node dentro de nuestra aplicación, podemos optar por usar sus [imágenes oficiales](https://hub.docker.com/_/node):
   - **node:latest**: Última versión de node, por lo que es inestable. Tiene un peso comprimido de 353.67 MB, usa una distribución Debian estándar y su última actualización fue hace 16 horas.
   - **node:lts**: Última versión estable de Node(18.13.0). Tiene un peso comprimido de 352.69 MB, usa una distribución estándar de Debian y su última actualización fue hace 15 días.
   - **node:lts-slim**: Imagen node:lts que contiene únicamente los paquetes necesarios para instalar node. Tiene un peso comprimido de 75.97 MB y su última actualización fue hace 15 días.
-  - **node:lts-alpine**: Imagen basada en una distribución Alpine. Tiene un peso comprimido de 50.21 MB y su última actualización fue hace 17 días.
-  
+  - **node:lts-alpine**: Imagen basada en una distribución Alpine. Tiene un peso comprimido de 50.21 MB y su última actualización fue hace 17 días. 
 Todas estas imágenes de node cuentan con el inconveniente de traer instalado yarn(que no usamos en la aplicación). Esta instalación nos supone de un peso en la imagen de 5.33 MB según [Snyk Advisor](https://snyk.io/advisor/npm-package/yarn) que generaría deuda técnica, aunque no tenga un peso demasiado significativo. Además, estas imágenes no traen instalado pnpm, por lo que habría que instalarlo también.
+
+### Imágenes no oficiales de Node:
+  - **bitnami/node**: Podemos encontrar su documentación en el siguiente [enlace](https://github.com/bitnami/containers/tree/main/bitnami/node). Su última actualización fue hace un día, por lo que tiene un buen mantenimiento. Al igual que las imágenes oficiales de Node, trae instaladas funcionalidades extra que no son necesarias para el proyecto(yarn por ejemplo). El problema de esta imagen lo encontramos al mirar su peso, ya que tiene un peso comprimido de 240 MB.
+  - **cimg/node**: Podemos encontrar su documentación en el siguiente [enlace](https://hub.docker.com/r/cimg/node). Su última actualización fue hace 3 dias, por lo que la imagen cuenta con un buen mantenimiento. Trae instaladas funcionalidades extra que no se usan en la aplicación(yarn). AL igual que la imagen anterior, su principal problema reside en su tamaño, que es de 610 MB comprimidos.
 
 Comparando todas las alternativas, es mejor opción, aunque tengan un tamaño base mayor, utilizar las imágenes oficiales de Node, ya que nos traen instaladas las herramientas necesarias para usar Node y no habría que instalarlas. Dentro de estas imágenes, las mejores opciones son **node:lts-slim** y **node:lts-alpine**. La elección de cualquiera de estas dos imágenes cumpliría con todos los criterios, ya que son las que tienen un peso menor, están actualizadas y cuentas con las herramientas instaladas para utilizar node, por lo que para el proyecto voy a optar por usar **node:lts-slim**, puesto que no tengo experiencia con distribuciones de Alpine.
