@@ -76,7 +76,7 @@ Teniendo en cuenta lo anterior, voy a optar por usar en el proyecto **Mocha**, y
 ## Elección de la imagen Base
 Para la elección de la imagen base vamos a tener en cuenta los siguientes criterios:
 - El tamaño de la imagen es importante, por lo que debemos elegir una imagen que no ocupe demasiado espacio.
-- La imagen debe contar con actualizaciones freuentes para no generar deuda técnica.
+- La imagen debe contar con actualizaciones frecuentes para no generar deuda técnica.
 - La imagen elegida debe contener las herramientas que serán necesarias para el proyecto(Node,pnpm).
 
 Teniendo en cuenta estos requisitos tenemos las siguientes opciones:
@@ -84,7 +84,7 @@ Teniendo en cuenta estos requisitos tenemos las siguientes opciones:
 - Estas imágenes cuentan únicamente con el Sistema Operativo, por lo que habría que instalar todas las herramientas:
    - **Ubuntu**: Imagen oficial de Ubuntu, podemos encontrar la documentación en el siguiente [enlace](https://hub.docker.com/_/ubuntu). Su última actualización fue hace 2 meses y tiene un peso comprimido de 29.02 MB. No trae instalada ninguna herramienta, por lo que sería necesario instalarlas dentro de la imagen.
   - **Alpine**: Imagen oficial de Alpine, podemos encontrar su documentación en el siguiente [enlace](https://hub.docker.com/_/alpine). Su última actualización fue hace 17 días y tiene un peso comprimido de 3.25 MB. Al igual que la imagen oficial de Ubuntu, no trae instalada ninguna herramienta.
- ### Imagenes Oficiales de Node:
+ ### Imágenes oficiales de Node:
 - Al usar Node dentro de nuestra aplicación, podemos optar por usar sus [imágenes oficiales](https://hub.docker.com/_/node):
   - **node:latest**: Última versión de node, por lo que es inestable. Tiene un peso comprimido de 353.67 MB, usa una distribución Debian estándar y su última actualización fue hace 16 horas.
   - **node:lts**: Última versión estable de Node(18.13.0). Tiene un peso comprimido de 352.69 MB, usa una distribución estándar de Debian y su última actualización fue hace 15 días.
