@@ -15,6 +15,6 @@ USER node
 
 RUN npm install -g pnpm \
     && pnpm install \
-    && rm package.json pnpm-lock.yaml /app/
+    && rm /app/package.json /app/pnpm-lock.yaml 
 
 ENTRYPOINT ["pnpm","test"]
