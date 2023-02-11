@@ -1,21 +1,22 @@
 FROM node:lts-slim
 
-RUN mkdir -p /app/test 
-
-WORKDIR /app
+RUN mkdir -p /app
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
     PNPM_HOME=/.pnpm \ 
     PATH=${PATH}:${PNPM_HOME}:/home/node/.npm-global/bin
 
-COPY package.json pnpm-lock.yaml /app/
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml ./
 
 RUN chown -R node /app
+
 USER node
 
 RUN npm install -g pnpm \
     && pnpm install \
-    && rm /app/package.json /app/pnpm-lock.yaml 
+    && rm package.json pnpm-lock.yaml 
 
 WORKDIR /app/test
 
