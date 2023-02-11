@@ -8,7 +8,7 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml /app/
 
 RUN chown -R node /app
 
