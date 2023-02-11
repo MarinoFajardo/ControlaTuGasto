@@ -1,6 +1,6 @@
 FROM node:lts-slim
 
-RUN mkdir -p /app/test
+RUN mkdir -p /app
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
     PNPM_HOME=/.pnpm \ 
@@ -8,7 +8,7 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json pnpm-lock.yaml ./
 
 RUN chown -R node /app
 
