@@ -1,6 +1,6 @@
 FROM node:lts-slim
 
-RUN mkdir -p /app
+RUN mkdir -p /app/test
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
     PNPM_HOME=/.pnpm \ 
